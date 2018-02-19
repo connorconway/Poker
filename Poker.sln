@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Core", "Poker\Poker.Core.csproj", "{C8635930-7387-4995-8DAD-D48800558998}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Core", "Poker.Core\Poker.Core.csproj", "{C8635930-7387-4995-8DAD-D48800558998}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Core.Tests", "Poker.Core.Tests\Poker.Core.Tests.csproj", "{7E19D3AC-8A96-4336-A128-862ECD8DECEC}"
 EndProject
