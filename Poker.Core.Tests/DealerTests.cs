@@ -17,8 +17,11 @@ namespace Poker.Core.Tests
 		[Test]
 		public void CreateHand_ShouldReturnHandWithTwoCards()
 		{
-			var hand = _dealer.CreateHand();
-			Assert.AreEqual(2, hand.Count);
+			var playerOneHand = _dealer.CreateHand();
+			var playerTwoHand = _dealer.CreateHand();
+			Assert.AreEqual(2, playerOneHand.Count);
+			Assert.AreEqual(2, playerTwoHand.Count);
+			Assert.AreNotEqual(playerOneHand, playerTwoHand);
 		}
 	}
 }
