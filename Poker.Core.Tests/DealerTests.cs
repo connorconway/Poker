@@ -11,6 +11,7 @@ namespace Poker.Core.Tests
 		public void DealerShouldBeInitialised()
 		{
 			_dealer = new Dealer();
+			_dealer.ShuffleDeck();
 		}
 
 		[Test]
