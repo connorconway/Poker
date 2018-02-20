@@ -1,6 +1,6 @@
-﻿namespace Poker.Core
+﻿namespace Poker.Core.Cards
 {
-	internal enum Suit
+	public enum Suit
 	{
 		Clubs,
 		Diamonds,
