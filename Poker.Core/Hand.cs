@@ -15,8 +15,8 @@ namespace Poker.Core
 
 		public void Add(Card c)
 		{
-			if (_cards.Count == 2)
-				throw new InvalidOperationException("Hand can not exceed two cards");
+			if (_cards.Count == 5)
+				throw new InvalidOperationException("Hand can not exceed five cards");
 			_cards.Add(c);
 		}
 

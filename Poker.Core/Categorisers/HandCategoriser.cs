@@ -2,9 +2,10 @@
 {
 	public abstract class HandCategoriser
 	{
-		public void RegisterNext(HandCategoriser next)
+		public HandCategoriser RegisterNext(HandCategoriser next)
 		{
 			Next = next;
+			return next;
 		}
 
 		protected HandCategoriser Next { get; private set; }

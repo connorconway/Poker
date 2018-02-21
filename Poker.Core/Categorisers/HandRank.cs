@@ -2,6 +2,7 @@
 {
 	public enum HandRank
 	{
+		TwoPair,
 		Pair,
 		HighCard
 	}

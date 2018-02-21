@@ -5,7 +5,7 @@ using Poker.Core.Categorisers;
 namespace Poker.Core.Tests
 {
 	[TestFixture]
-	public class CategoriserTests
+	public class CategoriserChainTests
 	{
 		private Hand _hand;
 
@@ -13,6 +13,17 @@ namespace Poker.Core.Tests
 		public void SetUp()
 		{
 			_hand = new Hand();
+		}
+
+		[Test]
+		public void WhenHandHasTwoPair_ShouldReturnTwoPairRank()
+		{
+			_hand.Add(new Card(Suit.Clubs, Value.Five));
+			_hand.Add(new Card(Suit.Diamonds, Value.Eight));
+			_hand.Add(new Card(Suit.Spades, Value.Eight));
+			_hand.Add(new Card(Suit.Hearts, Value.Five));
+
+			Assert.AreEqual(HandRank.TwoPair, HandCategoriserChain.GetRank(_hand));
 		}
 
 		[Test]

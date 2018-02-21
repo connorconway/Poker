@@ -44,7 +44,7 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CategoriserTests.cs" />
+    <Compile Include="CategoriserChainTests.cs" />
     <Compile Include="DealerTests.cs" />
     <Compile Include="DeckTests.cs" />
     <Compile Include="HandTests.cs" />
