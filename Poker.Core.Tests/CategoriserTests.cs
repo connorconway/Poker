@@ -13,7 +13,6 @@ namespace Poker.Core.Tests
 		public void SetUp()
 		{
 			_hand = new Hand();
-			var root = HandCategoriserChain.GetRank(_hand);
 		}
 
 		[Test]
