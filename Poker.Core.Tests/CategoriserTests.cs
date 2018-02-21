@@ -13,6 +13,7 @@ namespace Poker.Core.Tests
 		public void SetUp()
 		{
 			_hand = new Hand();
+			var root = HandCategoriserChain.GetRank(_hand);
 		}
 
 		[Test]
@@ -21,7 +22,7 @@ namespace Poker.Core.Tests
 			_hand.Add(new Card(Suit.Clubs, Value.Five));
 			_hand.Add(new Card(Suit.Diamonds, Value.Five));
 
-			Assert.AreEqual(HandRank.Pair, _hand.Rank);
+			Assert.AreEqual(HandRank.Pair, HandCategoriserChain.GetRank(_hand));
 		}
 
 		[Test]
@@ -30,7 +31,7 @@ namespace Poker.Core.Tests
 			_hand.Add(new Card(Suit.Clubs, Value.Five));
 			_hand.Add(new Card(Suit.Diamonds, Value.Nine));
 
-			Assert.AreEqual(HandRank.HighCard, _hand.Rank);
+			Assert.AreEqual(HandRank.HighCard, HandCategoriserChain.GetRank(_hand));
 		}
 	}
 }

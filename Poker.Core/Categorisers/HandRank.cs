@@ -4,6 +4,5 @@
 	{
 		Pair,
 		HighCard
-
 	}
 }

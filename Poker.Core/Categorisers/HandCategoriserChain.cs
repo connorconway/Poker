@@ -7,9 +7,8 @@
 
 		private HandCategoriserChain()
 		{
-			Root = new PairCategoriser()
-				.RegisterNext(new HighCardCategoriser());
-
+			Root = new PairCategoriser();
+			Root.RegisterNext(new HighCardCategoriser());
 		}
 
 		public static HandRank GetRank(Hand hand) => Instance.Root.Catagorise(hand);
