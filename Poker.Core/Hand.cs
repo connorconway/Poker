@@ -24,10 +24,17 @@ namespace Poker.Core
 		{
 			foreach (var card in _cards)
 			{
-				return _cards.Count(c => c.Value.Equals(card.Value)) == i;
+				if (_cards.Count(c => c.Value.Equals(card.Value)) == i)
+					return true;
 			}
 
 			return false;
+		}
+
+		public bool HasTwoPair()
+		{
+			var cardGroups = _cards.GroupBy(card => card.Value).Where(group => group.Count() == 2);
+			return cardGroups.Count() == 2;
 		}
 	}
 }
