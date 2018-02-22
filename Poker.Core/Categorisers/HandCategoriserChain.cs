@@ -7,19 +7,20 @@
 
 		private HandCategoriserChain()
 		{
-			Root = new TwoPairCategoriser();
-			Root.RegisterNext(new PairCategoriser())
+			Root = new ThreeOfAKindCategoriser();
+			Root.RegisterNext(new TwoPairCategoriser())
+				.RegisterNext(new PairCategoriser())
 				.RegisterNext(new HighCardCategoriser());
 		}
 
 		public static HandRank GetRank(Hand hand) => Instance.Root.Catagorise(hand);
 	}
 
-	internal class TwoPairCategoriser : HandCategoriser
+	internal class ThreeOfAKindCategoriser : HandCategoriser
 	{
 		public override HandRank Catagorise(Hand hand)
 		{
-			return hand.HasHoOfKind(2) ? HandRank.TwoPair : Next.Catagorise(hand);
+			return hand.HasHoOfKind(3) ? HandRank.ThreeOfAKind : Next.Catagorise(hand);
 		}
 	}
 }

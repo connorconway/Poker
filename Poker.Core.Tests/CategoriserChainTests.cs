@@ -16,6 +16,16 @@ namespace Poker.Core.Tests
 		}
 
 		[Test]
+		public void WhenHandHasThreeOfAKind_ShouldReturnThreeOfAKindRank()
+		{
+			_hand.Add(new Card(Suit.Clubs, Value.Five));
+			_hand.Add(new Card(Suit.Diamonds, Value.Five));
+			_hand.Add(new Card(Suit.Spades, Value.Five));
+
+			Assert.AreEqual(HandRank.ThreeOfAKind, HandCategoriserChain.GetRank(_hand));
+		}
+
+		[Test]
 		public void WhenHandHasTwoPair_ShouldReturnTwoPairRank()
 		{
 			_hand.Add(new Card(Suit.Clubs, Value.Five));
