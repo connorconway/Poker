@@ -46,5 +46,10 @@ namespace Poker.Core
 			}
 			return orderedCards.Select((i, j) => i.Value - j).Distinct().Skip(1).Count() <= _cards.Count - 5;
 		}
+
+		public bool HasFlush()
+		{
+			return _cards.GroupBy(card => card.Suit).Any(group => group.Count() == 5);
+		}
 	}
 }

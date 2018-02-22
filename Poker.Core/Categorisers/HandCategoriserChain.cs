@@ -7,8 +7,9 @@
 
 		private HandCategoriserChain()
 		{
-			Root = new StraightCategoriser();
-			Root.RegisterNext(new ThreeOfAKindCategoriser())
+			Root = new FlushCategoriser();
+			Root.RegisterNext(new StraightCategoriser())
+				.RegisterNext(new ThreeOfAKindCategoriser())
 				.RegisterNext(new TwoPairCategoriser())
 				.RegisterNext(new PairCategoriser())
 				.RegisterNext(new HighCardCategoriser());

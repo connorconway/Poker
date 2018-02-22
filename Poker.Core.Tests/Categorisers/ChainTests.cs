@@ -5,7 +5,7 @@ using Poker.Core.Categorisers;
 namespace Poker.Core.Tests.Categorisers
 {
 	[TestFixture]
-	public class CategoriserChainTests
+	public class ChainTests
 	{
 		private Hand _hand;
 
@@ -13,6 +13,18 @@ namespace Poker.Core.Tests.Categorisers
 		public void SetUp()
 		{
 			_hand = new Hand();
+		}
+
+		[Test]
+		public void WhenHandHasFlush_ShouldReturnFlushRank()
+		{
+			_hand.Add(new Card(Suit.Clubs, Value.Two));
+			_hand.Add(new Card(Suit.Clubs, Value.Eight));
+			_hand.Add(new Card(Suit.Clubs, Value.Ten));
+			_hand.Add(new Card(Suit.Clubs, Value.Jack));
+			_hand.Add(new Card(Suit.Clubs, Value.King));
+
+			Assert.AreEqual(HandRank.Flush, HandCategoriserChain.GetRank(_hand));
 		}
 
 		[Test]
