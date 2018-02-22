@@ -36,7 +36,15 @@ namespace Poker.Core
 
 		public bool HasStraight()
 		{
-			return _cards.OrderBy(c => c.Value).Select((i, j) => i.Value - j).Distinct().Skip(1).Count() <= _cards.Count - 5;
+			var orderedCards = _cards.OrderBy(a => a.Value).ToList();
+			if (orderedCards.First().Value.Equals(Value.Ace))
+			{
+				var highStraight = _cards.Count(c => c.Value.Equals(Value.King) || c.Value.Equals(Value.Queen) || c.Value.Equals(Value.Jack) || c.Value.Equals(Value.Ten)) == 4;
+				var lowStraight = _cards.Count(c => c.Value.Equals(Value.Two) || c.Value.Equals(Value.Three) || c.Value.Equals(Value.Four) || c.Value.Equals(Value.Five)) == 4;
+				if (lowStraight || highStraight)
+					return true;
+			}
+			return orderedCards.Select((i, j) => i.Value - j).Distinct().Skip(1).Count() <= _cards.Count - 5;
 		}
 	}
 }

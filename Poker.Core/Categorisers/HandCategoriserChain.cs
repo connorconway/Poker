@@ -16,12 +16,4 @@
 
 		public static HandRank GetRank(Hand hand) => Instance.Root.Catagorise(hand);
 	}
-
-	internal class ThreeOfAKindCategoriser : HandCategoriser
-	{
-		public override HandRank Catagorise(Hand hand)
-		{
-			return hand.HasHoOfKind(3) ? HandRank.ThreeOfAKind : Next.Catagorise(hand);
-		}
-	}
 }

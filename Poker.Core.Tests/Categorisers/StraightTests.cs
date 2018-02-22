@@ -16,18 +16,6 @@ namespace Poker.Core.Tests.Categorisers
 		}
 
 		[Test]
-		public void WhenHandHasStraight_ShouldReturnStraightRank()
-		{
-			_hand.Add(new Card(Suit.Clubs, Value.Two));
-			_hand.Add(new Card(Suit.Diamonds, Value.Three));
-			_hand.Add(new Card(Suit.Spades, Value.Four));
-			_hand.Add(new Card(Suit.Spades, Value.Five));
-			_hand.Add(new Card(Suit.Clubs, Value.Six));
-
-			Assert.AreEqual(HandRank.Straight, HandCategoriserChain.GetRank(_hand));
-		}
-
-		[Test]
 		public void WhenHandHasStraight_WithLowAce_ShouldReturnStraightRank()
 		{
 			_hand.Add(new Card(Suit.Clubs, Value.Ace));
@@ -49,6 +37,18 @@ namespace Poker.Core.Tests.Categorisers
 			_hand.Add(new Card(Suit.Clubs, Value.Ten));
 
 			Assert.AreEqual(HandRank.Straight, HandCategoriserChain.GetRank(_hand));
+		}
+
+		[Test]
+		public void WhenHandHasNoStraight_ShouldNotReturnStraightRank()
+		{
+			_hand.Add(new Card(Suit.Clubs, Value.Eight));
+			_hand.Add(new Card(Suit.Diamonds, Value.Ten));
+			_hand.Add(new Card(Suit.Spades, Value.Queen));
+			_hand.Add(new Card(Suit.Spades, Value.Seven));
+			_hand.Add(new Card(Suit.Clubs, Value.Ten));
+
+			Assert.AreNotEqual(HandRank.Straight, HandCategoriserChain.GetRank(_hand));
 		}
 	}
 }
