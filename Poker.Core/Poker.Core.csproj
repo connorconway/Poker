@@ -44,6 +44,8 @@
     <Compile Include="Categorisers\HandCategoriserChain.cs" />
     <Compile Include="Categorisers\HighCardCategoriser.cs" />
     <Compile Include="Categorisers\PairCategoriser.cs" />
+    <Compile Include="Categorisers\StraightCategoriser.cs" />
+    <Compile Include="Categorisers\TwoPairCategoriser.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="Categorisers\HandCategoriser.cs" />

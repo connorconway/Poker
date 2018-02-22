@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.Linq;
 using Poker.Core.Cards;
-using Poker.Core.Categorisers;
 
 namespace Poker.Core
 {
@@ -10,8 +9,6 @@ namespace Poker.Core
 	{
 		private readonly List<Card> _cards = new List<Card>();
 		public double Count => _cards.Count;
-
-		public HandRank Rank => HandCategoriserChain.GetRank(this);
 
 		public void Add(Card c)
 		{
@@ -35,6 +32,11 @@ namespace Poker.Core
 		{
 			var cardGroups = _cards.GroupBy(card => card.Value).Where(group => group.Count() == 2);
 			return cardGroups.Count() == 2;
+		}
+
+		public bool HasStraight()
+		{
+			return _cards.OrderBy(c => c.Value).Select((i, j) => i.Value - j).Distinct().Skip(1).Count() <= _cards.Count - 5;
 		}
 	}
 }

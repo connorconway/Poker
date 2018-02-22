@@ -2,7 +2,7 @@
 using Poker.Core.Cards;
 using Poker.Core.Categorisers;
 
-namespace Poker.Core.Tests
+namespace Poker.Core.Tests.Categorisers
 {
 	[TestFixture]
 	public class CategoriserChainTests
