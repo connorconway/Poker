@@ -17,7 +17,7 @@ namespace Poker.Core
 			_cards.Add(c);
 		}
 
-		public bool HasHoOfKind(int i)
+		public bool HasNoOfKind(int i)
 		{
 			foreach (var card in _cards)
 			{

@@ -4,7 +4,7 @@
 	{
 		public override HandRank Catagorise(Hand hand)
 		{
-			return hand.HasHoOfKind(3) ? HandRank.ThreeOfAKind : Next.Catagorise(hand);
+			return hand.HasNoOfKind(3) ? HandRank.ThreeOfAKind : Next.Catagorise(hand);
 		}
 	}
 }
