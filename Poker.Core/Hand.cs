@@ -24,7 +24,6 @@ namespace Poker.Core
 				if (_cards.Count(c => c.Value.Equals(card.Value)) == i)
 					return true;
 			}
-
 			return false;
 		}
 

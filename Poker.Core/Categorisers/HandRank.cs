@@ -2,6 +2,7 @@
 {
 	public enum HandRank
 	{
+		StraightFlush,
 		FourOfAKind,
 		FullHouse,
 		Flush,

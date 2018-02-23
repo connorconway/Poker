@@ -16,6 +16,18 @@ namespace Poker.Core.Tests.Categorisers
 		}
 
 		[Test]
+		public void WhenHandHasStraightFlush_ShouldReturnStraightFlushRank()
+		{
+			_hand.Add(new Card(Suit.Clubs, Value.Three));
+			_hand.Add(new Card(Suit.Clubs, Value.Four));
+			_hand.Add(new Card(Suit.Clubs, Value.Five));
+			_hand.Add(new Card(Suit.Clubs, Value.Six));
+			_hand.Add(new Card(Suit.Clubs, Value.Seven));
+
+			Assert.AreEqual(HandRank.StraightFlush, HandCategoriserChain.GetRank(_hand));
+		}
+
+		[Test]
 		public void WhenHandHasFourOfAKind_ShouldReturnFourOfAKindRank()
 		{
 			_hand.Add(new Card(Suit.Clubs, Value.Two));
