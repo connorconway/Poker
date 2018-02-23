@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿using System.Security.Cryptography.X509Certificates;
+using NUnit.Framework;
+using Poker.Core.PlayerActions;
+using Poker.Core.Players;
 
 namespace Poker.Core.Tests.PlayerActions
 {
@@ -6,9 +9,10 @@ namespace Poker.Core.Tests.PlayerActions
 	public class FoldTests
 	{
 		[Test]
-		public void testy()
+		public void WhenPlayerFolds_ThenHandRankingShouldBeFold()
 		{
-
+			var player = new Player();
+			player.TakeTurn(new Fold());
 		}
 	}
 }

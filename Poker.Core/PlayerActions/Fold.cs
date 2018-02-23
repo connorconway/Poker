@@ -1,10 +1,12 @@
-﻿namespace Poker.Core.PlayerActions
+﻿using Poker.Core.Players;
+
+namespace Poker.Core.PlayerActions
 {
 	public class Fold : ICommand
 	{
 		public void Execute()
 		{
-			throw new System.NotImplementedException();
+			
 		}
 	}
 }
