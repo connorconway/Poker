@@ -16,6 +16,17 @@ namespace Poker.Core.Tests.Categorisers
 		}
 
 		[Test]
+		public void WhenHandHasFourOfAKind_ShouldReturnFourOfAKindRank()
+		{
+			_hand.Add(new Card(Suit.Clubs, Value.Two));
+			_hand.Add(new Card(Suit.Diamonds, Value.Two));
+			_hand.Add(new Card(Suit.Spades, Value.Two));
+			_hand.Add(new Card(Suit.Hearts, Value.Two));
+
+			Assert.AreEqual(HandRank.FourOfAKind, HandCategoriserChain.GetRank(_hand));
+		}
+
+		[Test]
 		public void WhenHandHasFullHouse_ShouldReturnFullHouseRank()
 		{
 			_hand.Add(new Card(Suit.Clubs, Value.Two));
