@@ -1,4 +1,6 @@
-﻿namespace Poker.Core.Categorisers
+﻿using Poker.Core.Categorisers.Chain;
+
+namespace Poker.Core.Categorisers
 {
 	internal class TwoPairCategoriser : HandCategoriser
 	{

@@ -1,4 +1,4 @@
-﻿namespace Poker.Core.Categorisers
+﻿namespace Poker.Core.Categorisers.Chain
 {
 	public enum HandRank
 	{

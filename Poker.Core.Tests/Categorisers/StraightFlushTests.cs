@@ -1,6 +1,7 @@
 ﻿using NUnit.Framework;
 using Poker.Core.Cards;
 using Poker.Core.Categorisers;
+using Poker.Core.Categorisers.Chain;
 
 namespace Poker.Core.Tests.Categorisers
 {

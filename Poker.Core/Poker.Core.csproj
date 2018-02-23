@@ -41,15 +41,20 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Cards\Card.cs" />
-    <Compile Include="Categorisers\HandCategoriserChain.cs" />
+    <Compile Include="Categorisers\FlushCategoriser.cs" />
+    <Compile Include="Categorisers\FourOfAKindCategoriser.cs" />
+    <Compile Include="Categorisers\FullHouseCategoriser.cs" />
+    <Compile Include="Categorisers\Chain\HandCategoriserChain.cs" />
     <Compile Include="Categorisers\HighCardCategoriser.cs" />
     <Compile Include="Categorisers\PairCategoriser.cs" />
     <Compile Include="Categorisers\StraightCategoriser.cs" />
+    <Compile Include="Categorisers\StraightFlushCategoriser.cs" />
+    <Compile Include="Categorisers\ThreeOfAKindCategoriser.cs" />
     <Compile Include="Categorisers\TwoPairCategoriser.cs" />
     <Compile Include="Deck.cs" />
     <Compile Include="Hand.cs" />
     <Compile Include="Categorisers\HandCategoriser.cs" />
-    <Compile Include="Categorisers\HandRank.cs" />
+    <Compile Include="Categorisers\Chain\HandRank.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Cards\Suit.cs" />
     <Compile Include="Cards\Value.cs" />
