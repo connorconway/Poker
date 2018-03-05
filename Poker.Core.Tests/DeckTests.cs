@@ -1,5 +1,4 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 using Poker.Core.Cards;
 
 namespace Poker.Core.Tests
