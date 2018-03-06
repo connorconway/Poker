@@ -1,7 +1,9 @@
-﻿namespace Poker.Core.PlayerActions
+﻿using Poker.Core.Players;
+
+namespace Poker.Core.PlayerActions
 {
 	public interface ICommand
 	{
-		void Execute();
+		void Execute(Player player);
 	}
 }

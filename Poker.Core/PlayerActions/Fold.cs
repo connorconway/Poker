@@ -4,9 +4,9 @@ namespace Poker.Core.PlayerActions
 {
 	public class Fold : ICommand
 	{
-		public void Execute()
+		public void Execute(Player player)
 		{
-			
+			player.Out();
 		}
 	}
 }
