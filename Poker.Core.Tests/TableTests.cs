@@ -9,7 +9,7 @@ namespace Poker.Core.Tests
 	{
 		private Table _table;
 
-		[SetUp]
+		[OneTimeSetUp]
 		public void WhenTableInitialise_WithFourPlayers()
 		{
 			_table = new Table(players: 4);
@@ -31,8 +31,8 @@ namespace Poker.Core.Tests
 		[Test]
 		public void WhenPlayerRaises_TablePot_ShouldAddRaisedAmount()
 		{
-			_table.Players[1].TakeTurn(new Raise(100));
-			Assert.AreEqual(100, _table.Pot);
+			_table.Players[1].TakeTurn(new Raise(88));
+			Assert.AreEqual(88, _table.Pot);
 		}
 
 		[Test]
