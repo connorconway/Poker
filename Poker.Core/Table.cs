@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
+using Poker.Core.PlayerActions;
 using Poker.Core.Players;
 
 namespace Poker.Core
@@ -18,8 +19,14 @@ namespace Poker.Core
 				player.AcceptHand(_dealer.CreateHand());
 				Players.Add(player);
 			}
+
+			foreach (var player in Players)
+			{
+				player.PlayerRaised += (s, e) => Pot += e.Amount;
+			}
 		}
 
 		public int NoOfPlayers => Players.Count(p => p.InGame);
+		public int Pot { get; set; }
 	}
 }

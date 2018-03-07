@@ -13,6 +13,7 @@ namespace Poker.Core.Tests
 		{
 			_table = new Table(players: 4);
 		}
+
 		[Test]
 		public void FourPlayersShouldBeLive()
 		{
@@ -24,6 +25,13 @@ namespace Poker.Core.Tests
 		{
 			_table.Players[2].TakeTurn(new Fold());
 			Assert.AreEqual(3, _table.NoOfPlayers);
+		}
+
+		[Test]
+		public void WhenPlayerRaises_TablePot_ShouldAddRaisedAmount()
+		{
+			_table.Players[1].TakeTurn(new Raise(100));
+			Assert.AreEqual(100, _table.Pot);
 		}
 	}
 }
