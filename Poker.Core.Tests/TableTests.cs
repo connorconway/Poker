@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System;
+using NUnit.Framework;
 using Poker.Core.PlayerActions;
 
 namespace Poker.Core.Tests
@@ -32,6 +33,18 @@ namespace Poker.Core.Tests
 		{
 			_table.Players[1].TakeTurn(new Raise(100));
 			Assert.AreEqual(100, _table.Pot);
+		}
+
+		[Test]
+		public void WhenPlayerRaisesMoreThanTheirCurrentMoney_ShouldThrowException()
+		{
+			Assert.Throws<ArgumentException>(() => _table.Players[1].TakeTurn(new Raise(101)));
+		}
+
+		[Test]
+		public void WhenPlayerRaisesNegativeAmount_ShouldThrowException()
+		{
+			Assert.Throws<ArgumentException>(() => _table.Players[1].TakeTurn(new Raise(-10)));
 		}
 	}
 }
