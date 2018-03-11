@@ -1,4 +1,6 @@
-﻿namespace Poker.Core.Categorisers.Chain
+﻿using PlayingCards.Common;
+
+namespace Poker.Core.Categorisers.Chain
 {
 	public class HandCategoriserChain
 	{

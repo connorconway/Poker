@@ -1,4 +1,4 @@
-﻿namespace Poker.Core.Cards
+﻿namespace PlayingCards.Common.Cards
 {
 	public enum Value
 	{

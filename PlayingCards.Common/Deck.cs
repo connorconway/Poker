@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Poker.Core.Cards;
+using PlayingCards.Common.Cards;
 
-namespace Poker.Core
+namespace PlayingCards.Common
 {
 	public class Deck
 	{
@@ -13,10 +13,6 @@ namespace Poker.Core
 		{
 			InitialiseCards();
 		}
-
-		public int Count => _cards.Count;
-
-		public bool Unique => _cards.Count == _cards.Distinct().Count();
 
 		private void InitialiseCards()
 		{
@@ -35,8 +31,11 @@ namespace Poker.Core
 				_cards.Push(value);
 		}
 
-		public List<Card> Cards => _cards.ToList();
+		public Card Draw() => _cards.Pop();
 
-		public Card Draw() =>_cards.Pop();
+		//TODO Used in tests. Refactor out using visitor pattern??
+		public int Count => _cards.Count;
+		public bool Unique => _cards.Count == _cards.Distinct().Count();
+		public List<Card> Cards => _cards.ToList();
 	}
 }

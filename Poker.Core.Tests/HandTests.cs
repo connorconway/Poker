@@ -1,6 +1,7 @@
 ﻿using System;
 using NUnit.Framework;
-using Poker.Core.Cards;
+using PlayingCards.Common;
+using PlayingCards.Common.Cards;
 
 namespace Poker.Core.Tests
 {

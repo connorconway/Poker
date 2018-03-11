@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using Poker.Core.Cards;
+using PlayingCards.Common.Cards;
 
-namespace Poker.Core
+namespace PlayingCards.Common
 {
 	public class Hand
 	{
@@ -17,6 +17,8 @@ namespace Poker.Core
 			_cards.Add(c);
 		}
 
+
+		//TODO These are specific to poker and should not be in playingcards common. Refactor out into poker core dll.
 		public bool HasNoOfKind(int i)
 		{
 			foreach (var card in _cards)

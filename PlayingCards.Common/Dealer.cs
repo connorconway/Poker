@@ -1,6 +1,6 @@
-﻿using Poker.Core.Cards;
+﻿using PlayingCards.Common.Cards;
 
-namespace Poker.Core
+namespace PlayingCards.Common
 {
 	public class Dealer
 	{

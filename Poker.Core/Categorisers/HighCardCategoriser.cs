@@ -1,4 +1,5 @@
-﻿using Poker.Core.Categorisers.Chain;
+﻿using PlayingCards.Common;
+using Poker.Core.Categorisers.Chain;
 
 namespace Poker.Core.Categorisers
 {
