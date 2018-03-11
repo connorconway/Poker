@@ -9,6 +9,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Core.Tests", "Poker.C
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCards.Common", "PlayingCards.Common\PlayingCards.Common.csproj", "{78F3CABE-83D8-4B58-AD27-F849138B23EA}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCards.Common.Tests", "PlayingCards.Common.Tests\PlayingCards.Common.Tests.csproj", "{710BC5B0-D8FB-4B04-8047-19CD65964490}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -27,6 +29,10 @@ Global
 		{78F3CABE-83D8-4B58-AD27-F849138B23EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{78F3CABE-83D8-4B58-AD27-F849138B23EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{78F3CABE-83D8-4B58-AD27-F849138B23EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{710BC5B0-D8FB-4B04-8047-19CD65964490}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{710BC5B0-D8FB-4B04-8047-19CD65964490}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{710BC5B0-D8FB-4B04-8047-19CD65964490}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{710BC5B0-D8FB-4B04-8047-19CD65964490}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

@@ -1,8 +1,7 @@
 ﻿using NUnit.Framework;
-using PlayingCards.Common;
 using PlayingCards.Common.Cards;
 
-namespace Poker.Core.Tests
+namespace PlayingCards.Common.Tests
 {
 	[TestFixture]
 	public class DeckTests
