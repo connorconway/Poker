@@ -5,11 +5,13 @@ VisualStudioVersion = 15.0.27130.2027
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Core.Tests", "Poker.Core.Tests\Poker.Core.Tests.csproj", "{17C5EFB1-398F-46FC-A086-0B69FF94DAED}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCards.Common", "PlayingCards.Common\PlayingCards.Common.csproj", "{78F3CABE-83D8-4B58-AD27-F849138B23EA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayingCards.Common", "PlayingCards.Common\PlayingCards.Common.csproj", "{78F3CABE-83D8-4B58-AD27-F849138B23EA}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "PlayingCards.Common.Tests", "PlayingCards.Common.Tests\PlayingCards.Common.Tests.csproj", "{710BC5B0-D8FB-4B04-8047-19CD65964490}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "PlayingCards.Common.Tests", "PlayingCards.Common.Tests\PlayingCards.Common.Tests.csproj", "{710BC5B0-D8FB-4B04-8047-19CD65964490}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Core", "Poker.Core\Poker.Core.csproj", "{E8F130A8-5926-41E8-A3A6-55C28E6E9B97}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Game", "Poker.Game\Poker.Game.csproj", "{7B52FE02-42F7-4502-BA8B-5CE9B093F92C}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +35,12 @@ Global
 		{E8F130A8-5926-41E8-A3A6-55C28E6E9B97}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{E8F130A8-5926-41E8-A3A6-55C28E6E9B97}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{E8F130A8-5926-41E8-A3A6-55C28E6E9B97}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B52FE02-42F7-4502-BA8B-5CE9B093F92C}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7B52FE02-42F7-4502-BA8B-5CE9B093F92C}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7B52FE02-42F7-4502-BA8B-5CE9B093F92C}.Debug|Any CPU.Deploy.0 = Debug|Any CPU
+		{7B52FE02-42F7-4502-BA8B-5CE9B093F92C}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7B52FE02-42F7-4502-BA8B-5CE9B093F92C}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7B52FE02-42F7-4502-BA8B-5CE9B093F92C}.Release|Any CPU.Deploy.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
