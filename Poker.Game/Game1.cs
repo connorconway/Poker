@@ -66,8 +66,7 @@ namespace Poker.Game
 			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
 				Exit();
 
-			// TODO: Add your update logic here
-
+			_cardEntity.Update(gameTime);
 			base.Update(gameTime);
 		}
 
