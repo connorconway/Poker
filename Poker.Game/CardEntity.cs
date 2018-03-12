@@ -1,62 +1,43 @@
-﻿using System;
+﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework;
+using PlayingCards.Common.Cards;
+using XnaColor = Microsoft.Xna.Framework.Color;
 
 namespace Poker.Game
 {
 	public class CardEntity
 	{
-		static Texture2D cardsSheetTexture;
-		Animation walkDown;
-		Animation currentAnimation;
-
-
-		public float X
-		{
-			get;
-			set;
-		}
-
-		public float Y
-		{
-			get;
-			set;
-		}
+		private const int Offset = 1;
+		private const int CardTextureHeight = 96;
+		private const int CardTextureWidth = 72;
+		private static Texture2D _cardsSheetTexture;
+		private readonly Position _position;
+		private readonly Card _card = new Card(Suit.Spades, Value.King);
 
 		public CardEntity(GraphicsDevice graphicsDevice)
 		{
-			if(cardsSheetTexture == null)
-
+			_position = new Position();
+			if (_cardsSheetTexture != null) return;
+			using (var stream = TitleContainer.OpenStream("Content/cards.png"))
 			{
-				using (var stream = TitleContainer.OpenStream("Content/cards.png"))
-				{
-					cardsSheetTexture = Texture2D.FromStream(graphicsDevice, stream);
-				}
+				_cardsSheetTexture = Texture2D.FromStream(graphicsDevice, stream);
 			}
-
-			walkDown = new Animation();
-			walkDown.AddFrame(new Rectangle(0, 0, 16, 16), TimeSpan.FromSeconds(.25));
-			walkDown.AddFrame(new Rectangle(16, 0, 16, 16), TimeSpan.FromSeconds(.25));
-			walkDown.AddFrame(new Rectangle(0, 0, 16, 16), TimeSpan.FromSeconds(.25));
-			walkDown.AddFrame(new Rectangle(32, 0, 16, 16), TimeSpan.FromSeconds(.25));
 		}
 
-		public void Update(GameTime gameTime)
-		{
-			// temporary - we'll replace this with logic based off of which way the
-			// character is moving when we add movement logic
-			currentAnimation = walkDown;
-
-			currentAnimation.Update(gameTime);
-		}
+		private int XPosOnSpriteSheet => ((int) _card.Value - Offset) * CardTextureWidth;
+		private int YPosOnSpriteSheet => ((int) _card.Suit - Offset) * CardTextureHeight;
 
 		public void Draw(SpriteBatch spriteBatch)
 		{
-			Vector2 topLeftOfSprite = new Vector2(this.X, this.Y);
-			Color tintColor = Color.White;
-			var sourceRectangle = currentAnimation.CurrentRectangle;
-
-			spriteBatch.Draw(cardsSheetTexture, topLeftOfSprite, sourceRectangle, Color.White);
+			var topLeftOfSprite = new Vector2(_position.X, _position.Y);
+			var sourceRectangle = new Rectangle
+			{
+				X = XPosOnSpriteSheet,
+				Y = YPosOnSpriteSheet,
+				Height = CardTextureHeight,
+				Width = CardTextureWidth
+			};
+			spriteBatch.Draw(_cardsSheetTexture, topLeftOfSprite, sourceRectangle, XnaColor.White);
 		}
 	}
 }

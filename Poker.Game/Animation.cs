@@ -7,15 +7,15 @@ namespace Poker.Game
 {
 	public class Animation
 	{
-		List<AnimationFrame> frames = new List<AnimationFrame>();
-		TimeSpan timeIntoAnimation;
+		private readonly List<AnimationFrame> _frames = new List<AnimationFrame>();
+		private TimeSpan _timeIntoAnimation;
 
-		TimeSpan Duration
+		private TimeSpan Duration
 		{
 			get
 			{
 				double totalSeconds = 0;
-				foreach (var frame in frames)
+				foreach (var frame in _frames)
 				{
 					totalSeconds += frame.Duration.TotalSeconds;
 				}
@@ -26,24 +26,20 @@ namespace Poker.Game
 
 		public void AddFrame(Rectangle rectangle, TimeSpan duration)
 		{
-			AnimationFrame newFrame = new AnimationFrame()
+			var newFrame = new AnimationFrame()
 			{
 				SourceRectangle = rectangle,
 				Duration = duration
 			};
 
-			frames.Add(newFrame);
+			_frames.Add(newFrame);
 		}
 
 		public void Update(GameTime gameTime)
 		{
-			double secondsIntoAnimation =
-				timeIntoAnimation.TotalSeconds + gameTime.ElapsedGameTime.TotalSeconds;
-
-
-			double remainder = secondsIntoAnimation % Duration.TotalSeconds;
-
-			timeIntoAnimation = TimeSpan.FromSeconds(remainder);
+			var secondsIntoAnimation = _timeIntoAnimation.TotalSeconds + gameTime.ElapsedGameTime.TotalSeconds;
+			var remainder = secondsIntoAnimation % Duration.TotalSeconds;
+			_timeIntoAnimation = TimeSpan.FromSeconds(remainder);
 		}
 
 		public Rectangle CurrentRectangle
@@ -51,39 +47,24 @@ namespace Poker.Game
 			get
 			{
 				AnimationFrame currentFrame = null;
-
-				// See if we can find the frame
-				TimeSpan accumulatedTime = new TimeSpan();
-				foreach (var frame in frames)
+				var accumulatedTime = new TimeSpan();
+				foreach (var frame in _frames)
 				{
-					if (accumulatedTime + frame.Duration >= timeIntoAnimation)
+					if (accumulatedTime + frame.Duration >= _timeIntoAnimation)
 					{
 						currentFrame = frame;
 						break;
 					}
-					else
-					{
-						accumulatedTime += frame.Duration;
-					}
+
+					accumulatedTime += frame.Duration;
 				}
 
-				// If no frame was found, then try the last frame, 
-				// just in case timeIntoAnimation somehow exceeds Duration
 				if (currentFrame == null)
 				{
-					currentFrame = frames.LastOrDefault();
+					currentFrame = _frames.LastOrDefault();
 				}
 
-				// If we found a frame, return its rectangle, otherwise
-				// return an empty rectangle (one with no width or height)
-				if (currentFrame != null)
-				{
-					return currentFrame.SourceRectangle;
-				}
-				else
-				{
-					return Rectangle.Empty;
-				}
+				return currentFrame?.SourceRectangle ?? Rectangle.Empty;
 			}
 		}
 	}
