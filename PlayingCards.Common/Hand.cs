@@ -9,6 +9,7 @@ namespace PlayingCards.Common
 	{
 		private readonly List<Card> _cards = new List<Card>();
 		public double Count => _cards.Count;
+		public List<Card> Cards => _cards;
 
 		public void Add(Card c)
 		{

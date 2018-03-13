@@ -23,6 +23,14 @@ namespace Poker.Core
 			Players.ForEach(p => p.PlayerRaised += (s, e) => Pot += e.Amount);
 		}
 
+		public void DealCards()
+		{
+			foreach (var player in Players)
+			{
+				player.AcceptHand(_dealer.CreateHand());
+			}
+		}
+
 		public int NoOfPlayers => Players.Count(p => p.InGame);
 		public int Pot { get; private set; }
 	}

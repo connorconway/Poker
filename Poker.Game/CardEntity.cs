@@ -14,7 +14,7 @@ namespace Poker.Game
 		private readonly Position _position;
 		private readonly Card _card = new Card(Suit.Spades, Value.King);
 
-		public CardEntity(GraphicsDevice graphicsDevice)
+		public CardEntity(GraphicsDevice graphicsDevice, Card card) 
 		{
 			_position = new Position();
 			if (_cardsSheetTexture != null) return;
@@ -35,7 +35,7 @@ namespace Poker.Game
 				X = XPosOnSpriteSheet,
 				Y = YPosOnSpriteSheet,
 				Height = CardTextureHeight,
-				Width = CardTextureWidth
+				Width = CardTextureWidth - Offset
 			};
 			spriteBatch.Draw(_cardsSheetTexture, topLeftOfSprite, sourceRectangle, XnaColor.White);
 		}
