@@ -1,7 +1,7 @@
 ﻿using System;
 using Microsoft.Xna.Framework;
 
-namespace Poker.Game
+namespace Poker.Game.Animations
 {
 	public class AnimationFrame
 	{
