@@ -1,4 +1,5 @@
-﻿using Microsoft.Xna.Framework;
+﻿using System.Linq;
+using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Input.Touch;
 
 namespace Poker.Game.Buttons
@@ -10,17 +11,20 @@ namespace Poker.Game.Buttons
 
 		protected void HandleInput()
 		{
-			var touches = TouchPanel.GetState();
+			var currentTouch = TouchPanel.GetState();
 
-			if (touches.Count <= 0) return;
-			var touchLocation = touches[0];
-			var position = touchLocation.Position;
-				
+			foreach (var touch in currentTouch.Where(t => t.State == TouchLocationState.Pressed))
+			{
+				HandlePressed(touch.Position);
+			}
+		}
+
+		private void HandlePressed(Vector2 position)
+		{
 			var touch = new Rectangle((int)position.X, (int)position.Y, Target.Width, Target.Height);
 
 			if (Target.Intersects(touch))
 			{
-				//TODO Fire event here?
 				IsClicked = true;
 			}
 		}

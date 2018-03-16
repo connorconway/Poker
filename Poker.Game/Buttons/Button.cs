@@ -21,11 +21,12 @@ namespace Poker.Game.Buttons
 
 		public void Update()
 		{
-			HandleInput();
 			if (IsClicked)
+			{
 				OnClick?.Invoke(this);
-
-			IsClicked = false;
+				IsClicked = false;
+			}
+			HandleInput();
 		}
 
 		public void Draw(SpriteBatch spriteBatch)
