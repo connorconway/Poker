@@ -7,9 +7,9 @@ namespace Poker.Game.Buttons
 	public class Clickable 
 	{
 		protected Rectangle Target;
-		protected bool IsClicked;
+		public bool IsClicked;
 
-		protected void HandleInput()
+		public void HandleInput()
 		{
 			var currentTouch = TouchPanel.GetState();
 
