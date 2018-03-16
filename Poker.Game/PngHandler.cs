@@ -61,7 +61,7 @@ namespace Poker.Game
 				? (float) _graphicsDevice.DisplayMode.Width / _texture.Width
 				: (float) _texture.Width / _graphicsDevice.DisplayMode.Width);
 
-			spriteBatch.Draw(_texture, Vector2.Zero, null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
+			spriteBatch.Draw(_texture, new Vector2(0,-50), null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
 		}
 	}
 }
