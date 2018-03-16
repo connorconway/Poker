@@ -59,9 +59,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Activity1.cs" />
-    <Compile Include="Animation.cs" />
-    <Compile Include="AnimationFrame.cs" />
-    <Compile Include="Button.cs" />
+    <Compile Include="Animations\Animation.cs" />
+    <Compile Include="Animations\AnimationFrame.cs" />
+    <Compile Include="Buttons\Button.cs" />
+    <Compile Include="Buttons\Clickable.cs" />
     <Compile Include="CardEntity.cs" />
     <Compile Include="DeckEntity.cs" />
     <Compile Include="MainGame.cs" />

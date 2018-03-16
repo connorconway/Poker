@@ -57,15 +57,11 @@ namespace Poker.Game
 
 		public void DrawFullScreen(SpriteBatch spriteBatch)
 		{
-			var topLeftOfSprite = new Vector2(0, 0);
-			var sourceRectangle = new Rectangle
-			{
-				X = 0,
-				Y = 0,
-				Height = _graphicsDevice.DisplayMode.Height,
-				Width = _graphicsDevice.DisplayMode.Width
-			};
-			spriteBatch.Draw(_texture, topLeftOfSprite, sourceRectangle, Color.White);
+			var scale = new Vector2(_texture.Width <= _graphicsDevice.DisplayMode.Width
+				? (float) _graphicsDevice.DisplayMode.Width / _texture.Width
+				: (float) _texture.Width / _graphicsDevice.DisplayMode.Width);
+
+			spriteBatch.Draw(_texture, Vector2.Zero, null, Color.White, 0.0f, Vector2.Zero, scale, SpriteEffects.None, 0.0f);
 		}
 	}
 }
