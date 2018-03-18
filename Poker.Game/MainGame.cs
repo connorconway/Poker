@@ -57,7 +57,6 @@ namespace Poker.Game
 		protected override void Draw(GameTime gameTime)
 		{
 			_spriteBatch.Begin();
-
 			_tablePng.DrawFullScreen(_spriteBatch);
 			
 			//TODO horrible! Oh so horrible....
@@ -75,7 +74,6 @@ namespace Poker.Game
 		
 			_deckPng.DrawDeck(_spriteBatch);
 			_startGameButton.Draw(_spriteBatch);
-
 			_spriteBatch.End();
 			base.Draw(gameTime);
 		}

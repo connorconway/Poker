@@ -5,17 +5,18 @@ using XnaColor = Microsoft.Xna.Framework.Color;
 
 namespace Poker.Game
 {
-	public class CardEntity
+	public class CardEntity : Card
 	{
 		private const int Offset = 1;
 		private const int CardTextureHeight = 96;
 		private const int CardTextureWidth = 72;
 		private static Texture2D _cardsSheetTexture;
 		private readonly Position _position;
-		private readonly Card _card = new Card(Suit.Spades, Value.King);
+		private readonly Card _card;
 
-		public CardEntity(GraphicsDevice graphicsDevice, Card card) 
+		public CardEntity(GraphicsDevice graphicsDevice, Card card) : base(card.Suit,  card.Value)
 		{
+			_card = card;
 			_position = new Position();
 			if (_cardsSheetTexture != null) return;
 			using (var stream = TitleContainer.OpenStream("Content/cards.png"))

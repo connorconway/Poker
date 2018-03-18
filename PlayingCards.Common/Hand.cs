@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using PlayingCards.Common.Cards;
+using PlayingCards.Common.Visitors;
 
 namespace PlayingCards.Common
 {
-	public class Hand
+	public class Hand : IVisitable
 	{
 		private readonly List<Card> _cards = new List<Card>();
 		public double Count => _cards.Count;
@@ -52,6 +53,13 @@ namespace PlayingCards.Common
 		public bool HasFlush()
 		{
 			return _cards.GroupBy(card => card.Suit).Any(group => group.Count() == 5);
+		}
+
+		public void Accept(Visitor visitor)
+		{
+			visitor.PreVisit(this);
+			_cards.ForEach(c => c.Accept(visitor));
+			visitor.PostVisit(this);
 		}
 	}
 }
