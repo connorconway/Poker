@@ -8,7 +8,7 @@ namespace PlayingCards.Common.Cards
 		public Value Value;
 		public Color Color;
 
-		protected Card(Suit suit, Value value)
+		protected internal Card(Suit suit, Value value)
 		{
 			Suit = suit;
 			Value = value;
