@@ -1,12 +1,13 @@
 ﻿using System.Collections.Generic;
 using PlayingCards.Common;
 using PlayingCards.Common.Cards;
+using PlayingCards.Common.Visitors;
 using Poker.Core.PlayerActions;
 using Poker.Core.PlayerActions.EventArgs;
 
 namespace Poker.Core.Players
 {
-	public class Player
+	public class Player : IVisitable
 	{
 		private Hand _hand;
 		private bool _inPlay = true;
@@ -32,6 +33,11 @@ namespace Poker.Core.Players
 		public void AcceptHand(Hand h)
 		{
 			_hand = h;
+		}
+
+		public void Accept(Visitor visitor)
+		{
+			_hand.Accept(visitor);
 		}
 	}
 }

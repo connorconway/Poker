@@ -3,6 +3,7 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Poker.Core;
 using Poker.Game.Buttons;
+using Poker.Game.Visitors;
 
 namespace Poker.Game
 {
@@ -10,7 +11,6 @@ namespace Poker.Game
 	{
 		private SpriteBatch _spriteBatch;
 		private PngHandler _tablePng;
-		private PngHandler _cardPng;
 		private PngHandler _deckPng;
 
 		private Button _startGameButton;
@@ -19,17 +19,16 @@ namespace Poker.Game
 		public MainGame()
 		{
 			ConfigureGraphicsDevice();
+			_table = new Table(players: 4);
 		}
 
 		private void StartGame(object sender)
 		{
-			_table = new Table(players: 4);
 			_table.DealCards();
 		}
 
 		protected override void Initialize()
 		{
-			_cardPng = new PngHandler(GraphicsDevice, "cards");
 			_tablePng = new PngHandler(GraphicsDevice, "table");
 			_deckPng = new PngHandler(GraphicsDevice, "cards");
 			_startGameButton = new Button(GraphicsDevice, "start");
@@ -58,19 +57,10 @@ namespace Poker.Game
 		{
 			_spriteBatch.Begin();
 			_tablePng.DrawFullScreen(_spriteBatch);
-			
-			//TODO horrible! Oh so horrible....
-			if (_table != null)
-			{
-				for (var i = 0; i < _table.NoOfPlayers; i++)
-				{
-					var cardNumber = 0;
-					foreach (var card in _table.Players[i].Cards)
-					{
-						_cardPng.Draw(_spriteBatch, card, cardNumber++, i);
-					}
-				}
-			}
+
+			var visitor = new CardDrawingVisitor(GraphicsDevice, _spriteBatch);
+			_table.Accept(visitor);
+			visitor.Draw();
 		
 			_deckPng.DrawDeck(_spriteBatch);
 			_startGameButton.Draw(_spriteBatch);

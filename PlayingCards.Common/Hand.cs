@@ -57,9 +57,7 @@ namespace PlayingCards.Common
 
 		public void Accept(Visitor visitor)
 		{
-			visitor.PreVisit(this);
 			_cards.ForEach(c => c.Accept(visitor));
-			visitor.PostVisit(this);
 		}
 	}
 }

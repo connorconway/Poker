@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
 using System.Linq;
 using PlayingCards.Common;
+using PlayingCards.Common.Visitors;
 using Poker.Core.Players;
 
 namespace Poker.Core
 {
-	public class Table
+	public class Table : IVisitable
 	{
 		private readonly Dealer _dealer = new Dealer();
 		public readonly List<Player> Players = new List<Player>();
@@ -33,5 +34,9 @@ namespace Poker.Core
 
 		public int NoOfPlayers => Players.Count(p => p.InGame);
 		public int Pot { get; private set; }
+		public void Accept(Visitor visitor)
+		{
+			Players.ForEach(p => p.Accept(visitor));
+		}
 	}
 }
