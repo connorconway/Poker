@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PlayingCards.Common.Tests.Visitors;
 
 namespace PlayingCards.Common.Tests
 {
@@ -19,9 +20,15 @@ namespace PlayingCards.Common.Tests
 		{
 			var playerOneHand = _dealer.CreateHand();
 			var playerTwoHand = _dealer.CreateHand();
-			Assert.AreEqual(2, playerOneHand.Count);
-			Assert.AreEqual(2, playerTwoHand.Count);
-			Assert.AreNotEqual(playerOneHand, playerTwoHand);
+
+			var playerOneVisitor = new CardTestVisitor();
+			var playerTwoVisitor = new CardTestVisitor();
+			playerOneHand.Accept(playerOneVisitor);
+			playerTwoHand.Accept(playerTwoVisitor);
+
+			Assert.AreEqual(2, playerOneVisitor.Count);
+			Assert.AreEqual(2, playerTwoVisitor.Count);
+			Assert.AreNotEqual(playerOneVisitor.Cards, playerTwoVisitor.Cards);
 		}
 	}
 }

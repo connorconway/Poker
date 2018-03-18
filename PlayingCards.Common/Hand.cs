@@ -9,14 +9,17 @@ namespace PlayingCards.Common
 	public class Hand : IVisitable
 	{
 		private readonly List<Card> _cards = new List<Card>();
-		public double Count => _cards.Count;
-		public List<Card> Cards => _cards;
 
 		public void Add(Card c)
 		{
 			if (_cards.Count == 5)
 				throw new InvalidOperationException("Hand can not exceed five cards");
 			_cards.Add(c);
+		}
+
+		public void Accept(Visitor visitor)
+		{
+			_cards.ForEach(c => c.Accept(visitor));
 		}
 
 
@@ -53,11 +56,6 @@ namespace PlayingCards.Common
 		public bool HasFlush()
 		{
 			return _cards.GroupBy(card => card.Suit).Any(group => group.Count() == 5);
-		}
-
-		public void Accept(Visitor visitor)
-		{
-			_cards.ForEach(c => c.Accept(visitor));
 		}
 	}
 }

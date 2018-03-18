@@ -17,8 +17,7 @@ namespace PlayingCards.Common.Cards
 
 		public void Accept(Visitor visitor)
 		{
-			visitor.PreVisit(this);
-			visitor.PostVisit(this);
+			visitor.Visit(this);
 		}
 	}
 }

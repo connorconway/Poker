@@ -1,10 +1,7 @@
 ﻿using System.Collections.Generic;
-using Java.IO;
 using Microsoft.Xna.Framework.Graphics;
-using PlayingCards.Common;
 using PlayingCards.Common.Cards;
 using PlayingCards.Common.Visitors;
-using Poker.Core.Players;
 
 namespace Poker.Game.Visitors
 {

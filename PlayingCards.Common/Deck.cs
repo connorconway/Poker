@@ -2,10 +2,11 @@
 using System.Collections.Generic;
 using System.Linq;
 using PlayingCards.Common.Cards;
+using PlayingCards.Common.Visitors;
 
 namespace PlayingCards.Common
 {
-	public class Deck
+	public class Deck : IVisitable
 	{
 		private Stack<Card> _cards;
 
@@ -14,12 +15,9 @@ namespace PlayingCards.Common
 			InitialiseCards();
 		}
 
-		private void InitialiseCards()
+		public void Accept(Visitor visitor)
 		{
-			_cards =
-				new Stack<Card>(new[] { Suit.Clubs, Suit.Diamonds, Suit.Hearts, Suit.Spades }
-					.SelectMany(suit => Enumerable.Range(1, 13), (suit, value) => new Card(suit, (Value)value))
-					.ToArray());
+			_cards.ToList().ForEach(c => c.Accept(visitor));
 		}
 
 		public void Shuffle()
@@ -31,11 +29,17 @@ namespace PlayingCards.Common
 				_cards.Push(value);
 		}
 
-		public Card Draw() => _cards.Pop();
+		public Card Draw()
+		{
+			return _cards.Pop();
+		}
 
-		//TODO Used in tests. Refactor out using visitor pattern??
-		public int Count => _cards.Count;
-		public bool Unique => _cards.Count == _cards.Distinct().Count();
-		public List<Card> Cards => _cards.ToList();
+		private void InitialiseCards()
+		{
+			_cards =
+				new Stack<Card>(new[] {Suit.Clubs, Suit.Diamonds, Suit.Hearts, Suit.Spades}
+					.SelectMany(suit => Enumerable.Range(1, 13), (suit, value) => new Card(suit, (Value) value))
+					.ToArray());
+		}
 	}
 }

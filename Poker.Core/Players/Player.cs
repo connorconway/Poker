@@ -1,6 +1,4 @@
-﻿using System.Collections.Generic;
-using PlayingCards.Common;
-using PlayingCards.Common.Cards;
+﻿using PlayingCards.Common;
 using PlayingCards.Common.Visitors;
 using Poker.Core.PlayerActions;
 using Poker.Core.PlayerActions.EventArgs;
@@ -28,7 +26,6 @@ namespace Poker.Core.Players
 
 		public void Out() => _inPlay = false;
 		public bool InGame => _inPlay;
-		public IEnumerable<Card> Cards => _hand.Cards;
 
 		public void AcceptHand(Hand h)
 		{
