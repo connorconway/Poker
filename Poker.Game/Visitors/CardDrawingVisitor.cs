@@ -24,6 +24,7 @@ namespace Poker.Game.Visitors
 
 		public void Draw()
 		{
+			//TODO horrendous. Drawing cards at different positions depending on player
 			var cardNumber = 0;
 			foreach (var card in _result)
 			{

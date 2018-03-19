@@ -26,8 +26,8 @@ namespace Poker.Game
 			}
 		}
 
-		private int XPosOnSpriteSheet(Card card) => ((int)card.Value - Offset) * CardTextureWidth;
-		private int YPosOnSpriteSheet(Card card) => ((int)card.Suit - Offset) * CardTextureHeight;
+		private static int XPosOnSpriteSheet(Card card) => ((int)card.Value - Offset) * CardTextureWidth;
+		private static int YPosOnSpriteSheet(Card card) => ((int)card.Suit - Offset) * CardTextureHeight;
 
 		public void Draw(SpriteBatch spriteBatch, Card card, int cardNumber, int playerNumber)
 		{
@@ -44,7 +44,7 @@ namespace Poker.Game
 
 		public void DrawDeck(SpriteBatch spriteBatch)
 		{
-			var topLeftOfSprite = new Vector2(460, 280);
+			var topLeftOfSprite = new Vector2(_graphicsDevice.DisplayMode.Width/2.0f, _graphicsDevice.DisplayMode.Height/2.0f);
 			var sourceRectangle = new Rectangle
 			{
 				X = DeckPositionOnSpriteSheet * DeckTextureWidth,

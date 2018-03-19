@@ -7,7 +7,7 @@ namespace Poker.Core.Players
 {
 	public class Player : IVisitable
 	{
-		private Hand _hand;
+		private Hand _hand = new Hand();
 		private bool _inPlay = true;
 		public int Money { get; } = 100;
 

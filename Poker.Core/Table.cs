@@ -9,6 +9,8 @@ namespace Poker.Core
 	public class Table : IVisitable
 	{
 		private readonly Dealer _dealer = new Dealer();
+
+		//TODO used to decide which player should take action. Refactor out.
 		public readonly List<Player> Players = new List<Player>();
 
 		public Table(int players)
@@ -16,9 +18,7 @@ namespace Poker.Core
 			_dealer.ShuffleDeck();
 			for (var i = 0; i < players; i++)
 			{
-				var player = new Player();
-				player.AcceptHand(_dealer.CreateHand());
-				Players.Add(player);
+				Players.Add(new Player());
 			}
 
 			Players.ForEach(p => p.PlayerRaised += (s, e) => Pot += e.Amount);
@@ -32,11 +32,13 @@ namespace Poker.Core
 			}
 		}
 
-		public int NoOfPlayers => Players.Count(p => p.InGame);
-		public int Pot { get; private set; }
 		public void Accept(Visitor visitor)
 		{
 			Players.ForEach(p => p.Accept(visitor));
 		}
+
+		//TODO public getters used for testing. Refactor out.
+		public int NoOfPlayers => Players.Count(p => p.InGame);
+		public int Pot { get; private set; }
 	}
 }

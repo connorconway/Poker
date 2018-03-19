@@ -14,7 +14,7 @@ namespace Poker.Game
 		private PngHandler _deckPng;
 
 		private Button _startGameButton;
-		private Table _table;
+		private readonly Table _table;
 
 		public MainGame()
 		{
