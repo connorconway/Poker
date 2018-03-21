@@ -27,7 +27,7 @@ namespace Poker.Core.Players
 		public void Out() => _inPlay = false;
 		public bool InGame => _inPlay;
 
-		public void AcceptHand(Hand h)
+		public void Accept(Hand h)
 		{
 			_hand = h;
 		}

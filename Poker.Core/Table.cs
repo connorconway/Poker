@@ -28,7 +28,7 @@ namespace Poker.Core
 		{
 			foreach (var player in Players)
 			{
-				player.AcceptHand(_dealer.CreateHand());
+				player.Accept(_dealer.CreateHand());
 			}
 		}
 

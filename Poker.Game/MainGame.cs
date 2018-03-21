@@ -58,9 +58,9 @@ namespace Poker.Game
 			_spriteBatch.Begin();
 			_tablePng.DrawFullScreen(_spriteBatch);
 
-			var visitor = new CardDrawingVisitor(GraphicsDevice, _spriteBatch);
-			_table.Accept(visitor);
-			visitor.Draw();
+			var cardVisitor = new CardDrawingVisitor(GraphicsDevice, _spriteBatch);
+			_table.Accept(cardVisitor);
+			cardVisitor.Draw();
 		
 			_deckPng.DrawDeck(_spriteBatch);
 			_startGameButton.Draw(_spriteBatch);

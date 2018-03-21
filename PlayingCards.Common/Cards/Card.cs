@@ -4,9 +4,9 @@ namespace PlayingCards.Common.Cards
 {
 	public class Card : IVisitable
 	{
-		public Suit Suit;
-		public Value Value;
-		public Color Color;
+		public readonly Suit Suit;
+		public readonly Value Value;
+		public readonly Color Color;
 
 		public Card(Suit suit, Value value)
 		{
