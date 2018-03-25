@@ -24,7 +24,7 @@ namespace Poker.Game
 
 		private void StartGame(object sender)
 		{
-			_table.DealCards();
+			_table.InitiateHands();
 		}
 
 		protected override void Initialize()

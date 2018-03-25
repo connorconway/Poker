@@ -16,11 +16,30 @@ namespace PlayingCards.Common.Tests
 		}
 
 		[Test]
-		public void CreateHand_ShouldReturnHandWithTwoCards()
+		public void CreateHand_ShouldReturnHandWithZeroCards()
 		{
 			var playerOneHand = _dealer.CreateHand();
 			var playerTwoHand = _dealer.CreateHand();
 
+			var playerOneVisitor = new CardTestVisitor();
+			var playerTwoVisitor = new CardTestVisitor();
+			playerOneHand.Accept(playerOneVisitor);
+			playerTwoHand.Accept(playerTwoVisitor);
+
+			Assert.AreEqual(0, playerOneVisitor.Count);
+			Assert.AreEqual(0, playerTwoVisitor.Count);
+		}
+
+		[Test]
+		public void DealCard_ShouldDealDifferentCardToPlayer()
+		{
+			var playerOneHand = _dealer.CreateHand();
+			var playerTwoHand = _dealer.CreateHand();
+			playerOneHand.Add(_dealer.DealCard());
+			playerOneHand.Add(_dealer.DealCard());
+			playerTwoHand.Add(_dealer.DealCard());
+			playerTwoHand.Add(_dealer.DealCard());
+		
 			var playerOneVisitor = new CardTestVisitor();
 			var playerTwoVisitor = new CardTestVisitor();
 			playerOneHand.Accept(playerOneVisitor);

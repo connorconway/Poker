@@ -1,4 +1,5 @@
 ﻿using PlayingCards.Common;
+using PlayingCards.Common.Cards;
 using PlayingCards.Common.Visitors;
 using Poker.Core.PlayerActions;
 using Poker.Core.PlayerActions.EventArgs;
@@ -30,6 +31,11 @@ namespace Poker.Core.Players
 		public void Accept(Hand h)
 		{
 			_hand = h;
+		}
+
+		public void Accept(Card c)
+		{
+			_hand.Add(c);
 		}
 
 		public void Accept(Visitor visitor)

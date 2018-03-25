@@ -1,4 +1,5 @@
-﻿using System.Collections.Generic;
+﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using PlayingCards.Common;
 using PlayingCards.Common.Visitors;
@@ -24,12 +25,16 @@ namespace Poker.Core
 			Players.ForEach(p => p.PlayerRaised += (s, e) => Pot += e.Amount);
 		}
 
-		public void DealCards()
+		public void InitiateHands()
 		{
-			foreach (var player in Players)
-			{
-				player.Accept(_dealer.CreateHand());
-			}
+			Players.ForEach(CreateHand);
+		}
+
+		private void CreateHand(Player player)
+		{
+			player.Accept(_dealer.CreateHand());
+			player.Accept(_dealer.DealCard());
+			player.Accept(_dealer.DealCard());
 		}
 
 		public void Accept(Visitor visitor)

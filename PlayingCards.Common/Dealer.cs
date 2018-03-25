@@ -11,14 +11,8 @@ namespace PlayingCards.Common
 			_deck.Shuffle();
 		}
 
-		public Hand CreateHand()
-		{
-			var hand = new Hand();
-			hand.Add(DealCard());
-			hand.Add(DealCard());
-			return hand;
-		}
+		public Hand CreateHand() => new Hand();
 
-		private Card DealCard() => _deck.Draw();
+		public Card DealCard() => _deck.Draw();
 	}
 }
