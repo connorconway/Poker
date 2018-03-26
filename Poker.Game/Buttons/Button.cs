@@ -29,7 +29,7 @@ namespace Poker.Game.Buttons
 			HandleInput();
 		}
 
-		public void Draw(SpriteBatch spriteBatch)
+		public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
 		{
 			spriteBatch.Draw(_texture, new Vector2(Target.X, Target.Y), null, Color.White, 0.0f, new Vector2(0,0), 0.5f, SpriteEffects.None, 0.0f);
 		}

@@ -1,17 +1,18 @@
 using Microsoft.Xna.Framework;
-using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Poker.Core;
 using Poker.Game.Buttons;
+using Poker.Game.TextureHandling;
 using Poker.Game.Visitors;
+using Texture = Poker.Game.TextureHandling.Texture;
 
 namespace Poker.Game
 {
 	public class MainGame : Microsoft.Xna.Framework.Game
 	{
-		private SpriteBatch _spriteBatch;
-		private PngHandler _tablePng;
-		private PngHandler _deckPng;
+		private Microsoft.Xna.Framework.Graphics.SpriteBatch _spriteBatch;
+		private Texture _tableTexture;
+		private Texture _deckTexture;
 
 		private Button _startGameButton;
 		private readonly Table _table;
@@ -24,13 +25,13 @@ namespace Poker.Game
 
 		private void StartGame(object sender)
 		{
-			_table.InitiateHands();
+			_table.InitialiseHands();
 		}
 
 		protected override void Initialize()
 		{
-			_tablePng = new PngHandler(GraphicsDevice, "table");
-			_deckPng = new PngHandler(GraphicsDevice, "cards");
+			_tableTexture = new TableTexture(GraphicsDevice);
+			_deckTexture = new CardTexture(GraphicsDevice);
 			_startGameButton = new Button(GraphicsDevice, "start");
 			CreateEventListeners();
 			base.Initialize();
@@ -38,7 +39,7 @@ namespace Poker.Game
 
 		protected override void LoadContent()
 		{
-			_spriteBatch = new SpriteBatch(GraphicsDevice);
+			_spriteBatch = new Microsoft.Xna.Framework.Graphics.SpriteBatch(GraphicsDevice);
 		}
 
 		protected override void UnloadContent() { }
@@ -55,17 +56,22 @@ namespace Poker.Game
 
 		protected override void Draw(GameTime gameTime)
 		{
-			_spriteBatch.Begin();
-			_tablePng.DrawFullScreen(_spriteBatch);
+			using (new DisposableSpriteBatch(_spriteBatch))
+			{
+				_tableTexture.Draw(_spriteBatch);
+				_deckTexture.Draw(_spriteBatch);
+				_startGameButton.Draw(_spriteBatch);
+				DrawCards();
+			}
 
+			base.Draw(gameTime);
+		}
+
+		private void DrawCards()
+		{
 			var cardVisitor = new CardDrawingVisitor(GraphicsDevice, _spriteBatch);
 			_table.Accept(cardVisitor);
 			cardVisitor.Draw();
-		
-			_deckPng.DrawDeck(_spriteBatch);
-			_startGameButton.Draw(_spriteBatch);
-			_spriteBatch.End();
-			base.Draw(gameTime);
 		}
 
 		private void CreateEventListeners()

@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using PlayingCards.Common;
 using PlayingCards.Common.Visitors;
@@ -25,21 +24,21 @@ namespace Poker.Core
 			Players.ForEach(p => p.PlayerRaised += (s, e) => Pot += e.Amount);
 		}
 
-		public void InitiateHands()
+		public void InitialiseHands()
 		{
-			Players.ForEach(CreateHand);
-		}
-
-		private void CreateHand(Player player)
-		{
-			player.Accept(_dealer.CreateHand());
-			player.Accept(_dealer.DealCard());
-			player.Accept(_dealer.DealCard());
+			Players.ForEach(InitialiseHand);
 		}
 
 		public void Accept(Visitor visitor)
 		{
 			Players.ForEach(p => p.Accept(visitor));
+		}
+
+		private void InitialiseHand(Player player)
+		{
+			player.Accept(_dealer.CreateHand());
+			player.Accept(_dealer.DealCard());
+			player.Accept(_dealer.DealCard());
 		}
 
 		//TODO public getters used for testing. Refactor out.
