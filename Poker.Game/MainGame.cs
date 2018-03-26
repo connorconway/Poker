@@ -1,4 +1,5 @@
 using Microsoft.Xna.Framework;
+using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Poker.Core;
 using Poker.Game.Buttons;
@@ -10,7 +11,7 @@ namespace Poker.Game
 {
 	public class MainGame : Microsoft.Xna.Framework.Game
 	{
-		private Microsoft.Xna.Framework.Graphics.SpriteBatch _spriteBatch;
+		private SpriteBatch _spriteBatch;
 		private Texture _tableTexture;
 		private Texture _deckTexture;
 
@@ -39,18 +40,14 @@ namespace Poker.Game
 
 		protected override void LoadContent()
 		{
-			_spriteBatch = new Microsoft.Xna.Framework.Graphics.SpriteBatch(GraphicsDevice);
+			_spriteBatch = new SpriteBatch(GraphicsDevice);
 		}
 
 		protected override void UnloadContent() { }
 
 		protected override void Update(GameTime gameTime)
 		{
-			if (GamePad.GetState(PlayerIndex.One).Buttons.Back == ButtonState.Pressed)
-				Exit();
-
 			_startGameButton.Update();
-
 			base.Update(gameTime);
 		}
 
