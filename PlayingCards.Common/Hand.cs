@@ -28,7 +28,7 @@ namespace PlayingCards.Common
 		{
 			foreach (var card in _cards)
 			{
-				if (_cards.Count(c => c.Value.Equals(card.Value)) == i)
+				if (_cards.Count(c => c.Value == card.Value) == i)
 					return true;
 			}
 			return false;
@@ -43,10 +43,10 @@ namespace PlayingCards.Common
 		public bool HasStraight()
 		{
 			var orderedCards = _cards.OrderBy(a => a.Value).ToList();
-			if (orderedCards.First().Value.Equals(Value.Ace))
+			if (orderedCards.First().Value == Value.Ace)
 			{
-				var highStraight = _cards.Count(c => c.Value.Equals(Value.King) || c.Value.Equals(Value.Queen) || c.Value.Equals(Value.Jack) || c.Value.Equals(Value.Ten)) == 4;
-				var lowStraight = _cards.Count(c => c.Value.Equals(Value.Two) || c.Value.Equals(Value.Three) || c.Value.Equals(Value.Four) || c.Value.Equals(Value.Five)) == 4;
+				var highStraight = _cards.Count(c => c.Value == Value.King || c.Value == Value.Queen || c.Value.Equals(Value.Jack) || c.Value.Equals(Value.Ten)) == 4;
+				var lowStraight = _cards.Count(c => c.Value == Value.Two || c.Value == Value.Three || c.Value.Equals(Value.Four) || c.Value.Equals(Value.Five)) == 4;
 				if (lowStraight || highStraight)
 					return true;
 			}
