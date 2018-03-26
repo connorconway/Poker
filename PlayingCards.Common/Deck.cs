@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PlayingCards.Common.Cards;
+using PlayingCards.Common.Exceptions;
 using PlayingCards.Common.Visitors;
 
 namespace PlayingCards.Common
@@ -31,6 +32,9 @@ namespace PlayingCards.Common
 
 		public Card Draw()
 		{
+			if (_cards.Count == 0)
+				throw new OutOfCardsException("There are no cards left to draw in the deck");
+
 			return _cards.Pop();
 		}
 

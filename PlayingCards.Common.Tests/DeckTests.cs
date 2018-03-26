@@ -1,5 +1,6 @@
 ﻿using NUnit.Framework;
 using PlayingCards.Common.Cards;
+using PlayingCards.Common.Exceptions;
 using PlayingCards.Common.Tests.Visitors;
 
 namespace PlayingCards.Common.Tests
@@ -52,6 +53,17 @@ namespace PlayingCards.Common.Tests
 			Assert.AreEqual(52, cardCountAfterShuffle);
 			Assert.AreEqual(cardCountBeforeShuffle, afterShuffleVisitor.UniqueCount);
 			Assert.AreNotEqual(cardsBeforeShuffle, cardsAfterShuffle);
+		}
+
+		[Test]
+		public void DrawShould_ThrowOutOfCardsException_WhenThereAreNoCardsLeftInTheDeck()
+		{
+			for (var i = 0; i < 52; i++)
+			{
+				_deck.Draw();
+			}
+
+			Assert.Throws<OutOfCardsException>(() => _deck.Draw());
 		}
 	}
 }
