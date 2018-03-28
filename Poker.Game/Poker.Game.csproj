@@ -70,9 +70,10 @@
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextureHandling\DeckTexture.cs" />
+    <Compile Include="TextureHandling\PossiblePlayerPositions.cs" />
     <Compile Include="TextureHandling\Texture.cs" />
     <Compile Include="TextureHandling\TableTexture.cs" />
-    <Compile Include="Visitors\CardDrawingVisitor.cs" />
+    <Compile Include="Drawing\CardDrawingConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

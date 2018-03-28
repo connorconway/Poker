@@ -1,4 +1,5 @@
-﻿using PlayingCards.Common;
+﻿using System;
+using PlayingCards.Common;
 using PlayingCards.Common.Cards;
 using PlayingCards.Common.Visitors;
 using Poker.Core.PlayerActions;
@@ -6,7 +7,7 @@ using Poker.Core.PlayerActions.EventArgs;
 
 namespace Poker.Core.Players
 {
-	public class Player : IVisitable
+	public class Player : IVisitable, IComparable<Player>
 	{
 		private Hand _hand = new Hand();
 		private bool _inPlay = true;
@@ -41,6 +42,11 @@ namespace Poker.Core.Players
 		public void Accept(Visitor visitor)
 		{
 			_hand.Accept(visitor);
+		}
+
+		public int CompareTo(Player other)
+		{
+			return GetHashCode().CompareTo(other.GetHashCode());
 		}
 	}
 }

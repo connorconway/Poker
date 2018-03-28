@@ -19,7 +19,13 @@ namespace Poker.Game.TextureHandling
 
 		public override void Draw(SpriteBatch spriteBatch, PlayingCards.Common.Cards.Card card, int cardNumber, int playerNumber)
 		{
-			var topLeftOfSprite = new Vector2(cardNumber * CardTextureWidth, playerNumber * CardTextureHeight);
+			var tablePos = new Position();
+			if (playerNumber == 1) tablePos = PossiblePlayerPositions.Top;
+			if (playerNumber == 2) tablePos = PossiblePlayerPositions.Right;
+			if (playerNumber == 3) tablePos = PossiblePlayerPositions.Bottom;
+			if (playerNumber == 4) tablePos = PossiblePlayerPositions.Left;
+
+			var topLeftOfSprite = new Vector2(tablePos.X + cardNumber * CardTextureWidth, tablePos.Y);
 			var sourceRectangle = new Rectangle
 			{
 				X = XPosOnSpriteSheet(card),

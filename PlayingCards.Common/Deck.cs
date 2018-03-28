@@ -33,7 +33,7 @@ namespace PlayingCards.Common
 		public Card Draw()
 		{
 			if (_cards.Count == 0)
-				throw new OutOfCardsException("There are no cards left to draw in the deck");
+				throw new OutOfCardsException("There are no cards left in the deck. Unable to draw.");
 
 			return _cards.Pop();
 		}

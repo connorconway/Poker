@@ -9,7 +9,7 @@ namespace Poker.Game.Buttons
 		public event ButtonClickedEventHandler OnClick;
 		private readonly Texture2D _texture; 
 
-		public Button(GraphicsDevice graphicsDevice, string nameOfImage)
+		private Button(GraphicsDevice graphicsDevice, string nameOfImage)
 		{
 			if (_texture != null) return;
 			using (var stream = TitleContainer.OpenStream($"Content/{nameOfImage}.png"))
@@ -18,6 +18,8 @@ namespace Poker.Game.Buttons
 			}
 			Target = new Rectangle(0, 500, _texture.Width/2, _texture.Height/2); 
 		}
+
+		public static Button StartButton(GraphicsDevice graphicsDevice) => new Button(graphicsDevice, "start");
 
 		public void Update()
 		{

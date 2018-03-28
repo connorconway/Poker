@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PlayingCards.Common.Cards;
 using Color = Microsoft.Xna.Framework.Color;
 
 namespace Poker.Game.TextureHandling
@@ -14,14 +15,14 @@ namespace Poker.Game.TextureHandling
 
 		public DeckTexture(GraphicsDevice graphicsDevice) : base(graphicsDevice, "cards") { }
 
-		public override void Draw(SpriteBatch spriteBatch, PlayingCards.Common.Cards.Card card, int cardNumber, int playerNumber)
+		public override void Draw(SpriteBatch spriteBatch, Card card, int cardNumber, int playerNumber)
 		{
 			//Do not need this here
 		}
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			var topLeftOfSprite = new Vector2(GraphicsDevice.DisplayMode.Width/2.0f, GraphicsDevice.DisplayMode.Height/2.0f);
+			var topLeftOfSprite = new Vector2(PossiblePlayerPositions.Deck.X, PossiblePlayerPositions.Deck.Y);
 			var sourceRectangle = new Rectangle
 			{
 				X = DeckPositionOnSpriteSheet * DeckTextureWidth,

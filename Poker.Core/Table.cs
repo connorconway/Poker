@@ -34,6 +34,17 @@ namespace Poker.Core
 			Players.ForEach(p => p.Accept(visitor));
 		}
 
+		public void Accept(PlayerVisitor visitor)
+		{
+			Players.ForEach(p => Visit(p, visitor));
+		}
+
+		private void Visit(Player player, PlayerVisitor v)
+		{
+			v.AddPlayer(player);
+			player.Accept(v);
+		}
+
 		private void InitialiseHand(Player player)
 		{
 			player.Accept(_dealer.CreateHand());

@@ -3,8 +3,8 @@ using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
 using Poker.Core;
 using Poker.Game.Buttons;
+using Poker.Game.Drawing;
 using Poker.Game.TextureHandling;
-using Poker.Game.Visitors;
 using Texture = Poker.Game.TextureHandling.Texture;
 
 namespace Poker.Game
@@ -32,8 +32,8 @@ namespace Poker.Game
 		protected override void Initialize()
 		{
 			_tableTexture = new TableTexture(GraphicsDevice);
-			_deckTexture = new CardTexture(GraphicsDevice);
-			_startGameButton = new Button(GraphicsDevice, "start");
+			_deckTexture = new DeckTexture(GraphicsDevice);
+			_startGameButton = Button.StartButton(GraphicsDevice);
 			CreateEventListeners();
 			base.Initialize();
 		}
@@ -66,9 +66,11 @@ namespace Poker.Game
 
 		private void DrawCards()
 		{
-			var cardVisitor = new CardDrawingVisitor(GraphicsDevice, _spriteBatch);
-			_table.Accept(cardVisitor);
-			cardVisitor.Draw();
+			var playerVisitor = new PlayerVisitor();
+			_table.Accept(playerVisitor);
+			var players = playerVisitor.Result();
+			var converter = new CardDrawingConverter(GraphicsDevice, _spriteBatch);
+			converter.Draw(players);
 		}
 
 		private void CreateEventListeners()
