@@ -45,8 +45,8 @@ namespace PlayingCards.Common
 			var orderedCards = _cards.OrderBy(a => a.Value).ToList();
 			if (orderedCards.First().Value == Value.Ace)
 			{
-				var highStraight = _cards.Count(c => c.Value == Value.King || c.Value == Value.Queen || c.Value.Equals(Value.Jack) || c.Value.Equals(Value.Ten)) == 4;
-				var lowStraight = _cards.Count(c => c.Value == Value.Two || c.Value == Value.Three || c.Value.Equals(Value.Four) || c.Value.Equals(Value.Five)) == 4;
+				var highStraight = _cards.Count(c => c.Value == Value.King || c.Value == Value.Queen || c.Value == Value.Jack || c.Value == Value.Ten) == 4;
+				var lowStraight = _cards.Count(c => c.Value == Value.Two || c.Value == Value.Three || c.Value == Value.Four || c.Value == Value.Five) == 4;
 				if (lowStraight || highStraight)
 					return true;
 			}
