@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using Poker.Game.TextureHandling;
 
 namespace Poker.Game.Buttons
 {
@@ -16,7 +17,7 @@ namespace Poker.Game.Buttons
 			{
 				_texture = Texture2D.FromStream(graphicsDevice, stream);
 			}
-			Target = new Rectangle(0, 500, _texture.Width/2, _texture.Height/2); 
+			Target = new Rectangle((int)Positions.BelowTable.X, (int)Positions.BelowTable.Y, _texture.Width/2, _texture.Height/2); 
 		}
 
 		public static Button StartButton(GraphicsDevice graphicsDevice) => new Button(graphicsDevice, "start");
@@ -31,9 +32,9 @@ namespace Poker.Game.Buttons
 			HandleInput();
 		}
 
-		public void Draw(Microsoft.Xna.Framework.Graphics.SpriteBatch spriteBatch)
+		public void Draw(SpriteBatch spriteBatch)
 		{
-			spriteBatch.Draw(_texture, new Vector2(Target.X, Target.Y), null, Color.White, 0.0f, new Vector2(0,0), 0.5f, SpriteEffects.None, 0.0f);
+			spriteBatch.Draw(_texture, Positions.BelowTable, null, Color.White, 0.0f, Vector2.Zero, 0.5f, SpriteEffects.None, 0.0f);
 		}
 	}
 }

@@ -22,7 +22,7 @@ namespace Poker.Game.TextureHandling
 
 		public override void Draw(SpriteBatch spriteBatch)
 		{
-			var topLeftOfSprite = new Vector2(PossiblePlayerPositions.Deck.X, PossiblePlayerPositions.Deck.Y);
+			var topLeftOfSprite = new Vector2(Positions.TableMiddleRight.X, Positions.TableMiddleRight.Y);
 			var sourceRectangle = new Rectangle
 			{
 				X = DeckPositionOnSpriteSheet * DeckTextureWidth,

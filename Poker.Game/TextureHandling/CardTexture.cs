@@ -1,5 +1,6 @@
 ﻿using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
+using PlayingCards.Common.Cards;
 using Color = Microsoft.Xna.Framework.Color;
 
 namespace Poker.Game.TextureHandling
@@ -14,16 +15,16 @@ namespace Poker.Game.TextureHandling
 
 		public CardTexture(GraphicsDevice graphicsDevice) : base(graphicsDevice, "cards") { }
 
-		private static int XPosOnSpriteSheet(PlayingCards.Common.Cards.Card card) => ((int)card.Value - Offset) * CardTextureWidth;
-		private static int YPosOnSpriteSheet(PlayingCards.Common.Cards.Card card) => ((int)card.Suit - Offset) * CardTextureHeight;
+		private static int XPosOnSpriteSheet(Card card) => ((int)card.Value - Offset) * CardTextureWidth;
+		private static int YPosOnSpriteSheet(Card card) => ((int)card.Suit - Offset) * CardTextureHeight;
 
-		public override void Draw(SpriteBatch spriteBatch, PlayingCards.Common.Cards.Card card, int cardNumber, int playerNumber)
+		public override void Draw(SpriteBatch spriteBatch, Card card, int cardNumber, int playerNumber)
 		{
-			var tablePos = new Position();
-			if (playerNumber == 1) tablePos = PossiblePlayerPositions.Top;
-			if (playerNumber == 2) tablePos = PossiblePlayerPositions.Right;
-			if (playerNumber == 3) tablePos = PossiblePlayerPositions.Bottom;
-			if (playerNumber == 4) tablePos = PossiblePlayerPositions.Left;
+			var tablePos = new Vector2();
+			if (playerNumber == 1) tablePos = Positions.TableTop;
+			if (playerNumber == 2) tablePos = Positions.TableRight;
+			if (playerNumber == 3) tablePos = Positions.TableLeft;
+			if (playerNumber == 4) tablePos = Positions.TableBottom;
 
 			var topLeftOfSprite = new Vector2(tablePos.X + cardNumber * CardTextureWidth, tablePos.Y);
 			var sourceRectangle = new Rectangle

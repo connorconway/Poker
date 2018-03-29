@@ -38,6 +38,8 @@ namespace PlayingCards.Common
 			return _cards.Pop();
 		}
 
+		public bool AnyCardsLeft() => _cards.Count > 0;
+
 		private void InitialiseCards()
 		{
 			_cards =

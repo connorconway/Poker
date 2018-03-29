@@ -66,11 +66,10 @@
     <Compile Include="DisposableSpriteBatch.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="TextureHandling\CardTexture.cs" />
-    <Compile Include="Position.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TextureHandling\DeckTexture.cs" />
-    <Compile Include="TextureHandling\PossiblePlayerPositions.cs" />
+    <Compile Include="TextureHandling\Positions.cs" />
     <Compile Include="TextureHandling\Texture.cs" />
     <Compile Include="TextureHandling\TableTexture.cs" />
     <Compile Include="Drawing\CardDrawingConverter.cs" />

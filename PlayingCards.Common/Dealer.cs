@@ -1,4 +1,5 @@
 ﻿using PlayingCards.Common.Cards;
+using PlayingCards.Common.Exceptions;
 
 namespace PlayingCards.Common
 {
@@ -13,6 +14,12 @@ namespace PlayingCards.Common
 
 		public Hand CreateHand() => new Hand();
 
-		public Card DealCard() => _deck.Draw();
+		public Card DealCard()
+		{
+			if (_deck.AnyCardsLeft())
+				return _deck.Draw();
+
+			return null;
+		}
 	}
 }
