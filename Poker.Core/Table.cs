@@ -39,6 +39,11 @@ namespace Poker.Core
 			Players.ForEach(p => Visit(p, visitor));
 		}
 
+		public void Accept(DiscardPileVisitor visitor)
+		{
+			_dealer.Accept(visitor);
+		}
+
 		private void Visit(Player player, PlayerVisitor v)
 		{
 			v.AddPlayer(player);

@@ -29,5 +29,10 @@ namespace PlayingCards.Common
 		{
 			_deck.Accept(visitor);
 		}
+
+		public void Accept(DiscardPileVisitor visitor)
+		{
+			_discardPile.Accept(visitor);
+		}
 	}
 }

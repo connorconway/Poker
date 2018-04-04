@@ -25,6 +25,8 @@ namespace Poker.Game.TextureHandling
 			if (playerNumber == 2) tablePos = Positions.TableRight;
 			if (playerNumber == 3) tablePos = Positions.TableLeft;
 			if (playerNumber == 4) tablePos = Positions.TableBottom;
+			if (playerNumber == 5) tablePos = Positions.TableMiddleLeft;
+			if (playerNumber == 6) tablePos = Positions.TableMiddleRight;
 
 			var topLeftOfSprite = new Vector2(tablePos.X + cardNumber * CardTextureWidth, tablePos.Y);
 			var sourceRectangle = new Rectangle

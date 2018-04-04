@@ -1,6 +1,8 @@
+using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
 using Microsoft.Xna.Framework.Input;
+using PlayingCards.Common;
 using Poker.Core;
 using Poker.Game.Buttons;
 using Poker.Game.Drawing;
@@ -59,9 +61,26 @@ namespace Poker.Game
 				_deckTexture.Draw(_spriteBatch);
 				_startGameButton.Draw(_spriteBatch);
 				DrawCards();
+				DrawDiscardPile();
 			}
 
 			base.Draw(gameTime);
+		}
+
+		private void DrawDeck()
+		{
+			//TODO how to draw the deck as this exists within the dealer class?
+			//TODO Should be face down version of all cards in the deck
+		}
+
+		private void DrawDiscardPile()
+		{
+			//TODO how to draw the discard pile as this exists within the dealer class?
+			var discardPileVisitor = new DiscardPileVisitor();
+			_table.Accept(discardPileVisitor);
+			var cards = discardPileVisitor.Result();
+			var converter = new PileCardDrawingConverter(GraphicsDevice, _spriteBatch);
+			converter.Draw(cards.ToList());
 		}
 
 		private void DrawCards()
@@ -69,7 +88,7 @@ namespace Poker.Game
 			var playerVisitor = new PlayerVisitor();
 			_table.Accept(playerVisitor);
 			var players = playerVisitor.Result();
-			var converter = new CardDrawingConverter(GraphicsDevice, _spriteBatch);
+			var converter = new PlayerCardDrawingConverter(GraphicsDevice, _spriteBatch);
 			converter.Draw(players);
 		}
 
