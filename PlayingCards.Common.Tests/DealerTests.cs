@@ -1,4 +1,5 @@
 ﻿using NUnit.Framework;
+using PlayingCards.Common.Cards;
 using PlayingCards.Common.Tests.Visitors;
 
 namespace PlayingCards.Common.Tests
@@ -48,6 +49,27 @@ namespace PlayingCards.Common.Tests
 			Assert.AreEqual(2, playerOneVisitor.Count);
 			Assert.AreEqual(2, playerTwoVisitor.Count);
 			Assert.AreNotEqual(playerOneVisitor.Cards, playerTwoVisitor.Cards);
+		}
+
+		[Test]
+		public void DealCard_ShouldShuffleDiscardPile_IfNoCardsLeftInDeck()
+		{
+			DealAllCardsInDeck();
+
+			var deckVisitor = new CardTestVisitor();
+			_dealer.Accept(deckVisitor);
+			Assert.AreEqual(0, deckVisitor.Count);
+
+			_dealer.DealCard();
+			_dealer.Accept(deckVisitor);
+			Assert.AreEqual(51, deckVisitor.Count);
+			Assert.AreEqual(51, deckVisitor.UniqueCount);
+		}
+
+		private void DealAllCardsInDeck()
+		{
+			for (var i = 0; i < 52; i++)
+				_dealer.DealCard();
 		}
 	}
 }

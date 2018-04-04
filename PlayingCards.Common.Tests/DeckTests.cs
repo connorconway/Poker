@@ -58,12 +58,26 @@ namespace PlayingCards.Common.Tests
 		[Test]
 		public void DrawShould_ThrowOutOfCardsException_WhenThereAreNoCardsLeftInTheDeck()
 		{
-			for (var i = 0; i < 52; i++)
-			{
-				_deck.Draw();
-			}
+			DrawAllCardsInDeck();
 
 			Assert.Throws<OutOfCardsException>(() => _deck.Draw());
+		}
+
+		[Test]
+		public void ReshuffleShould_ReInitialiseDeck_AndShuffle()
+		{
+			DrawAllCardsInDeck();
+			Assert.AreEqual(false, _deck.AnyCardsLeft());
+
+			_deck.ReShuffle();
+
+			Assert.AreEqual(true, _deck.AnyCardsLeft());
+		}
+
+		private void DrawAllCardsInDeck()
+		{
+			for (var i = 0; i < 52; i++)
+				_deck.Draw();
 		}
 	}
 }

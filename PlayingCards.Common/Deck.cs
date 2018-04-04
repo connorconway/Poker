@@ -47,5 +47,11 @@ namespace PlayingCards.Common
 					.SelectMany(suit => Enumerable.Range(1, 13), (suit, value) => new Card(suit, (Value) value))
 					.ToArray());
 		}
+
+		public void ReShuffle()
+		{
+			InitialiseCards();
+			Shuffle();
+		}
 	}
 }
