@@ -1,11 +1,11 @@
 ﻿using PlayingCards.Common.Cards;
-using PlayingCards.Common.Exceptions;
 
 namespace PlayingCards.Common
 {
 	public class Dealer
 	{
 		private readonly Deck _deck = new Deck();
+		private readonly DiscardPile _pile = new DiscardPile();
 
 		public void ShuffleDeck()
 		{
