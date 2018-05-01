@@ -1,4 +1,5 @@
 ﻿using PlayingCards.Common.Cards;
+using PlayingCards.Common.Piles;
 using PlayingCards.Common.Visitors;
 
 namespace PlayingCards.Common
@@ -6,7 +7,7 @@ namespace PlayingCards.Common
 	public class Dealer : IVisitable
 	{
 		private readonly Deck _deck = new Deck();
-		private readonly DiscardPile _discardPile = new DiscardPile();
+		private readonly Discard _discard = new Discard();
 
 		public void ShuffleDeck()
 		{
@@ -20,7 +21,7 @@ namespace PlayingCards.Common
 			if (!_deck.AnyCardsLeft())
 			{
 				_deck.ReShuffle();
-				_discardPile.Reset();
+				_discard.Reset();
 			}
 			return _deck.Draw();
 		}
@@ -32,7 +33,12 @@ namespace PlayingCards.Common
 
 		public void Accept(DiscardPileVisitor visitor)
 		{
-			_discardPile.Accept(visitor);
+			_discard.Accept(visitor);
+		}
+
+		public void Discard(Card card)
+		{
+			_discard.Add(card);
 		}
 	}
 }

@@ -1,5 +1,7 @@
 ﻿using NUnit.Framework;
 using PlayingCards.Common.Cards;
+using PlayingCards.Common.Piles;
+using PlayingCards.Common.Visitors;
 
 namespace PlayingCards.Common.Tests.Visitors
 {
@@ -17,7 +19,7 @@ namespace PlayingCards.Common.Tests.Visitors
 		[Test]
 		public void Result()
 		{
-			var discardPile = new DiscardPile();
+			var discardPile = new Discard();
 			discardPile.Add(new Card(Suit.Clubs, Value.Eight));
 			discardPile.Add(new Card(Suit.Diamonds, Value.Seven));
 			discardPile.Add(new Card(Suit.Diamonds, Value.Ace));

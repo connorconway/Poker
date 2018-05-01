@@ -18,7 +18,7 @@ namespace Poker.Game.Drawing
 
 		public void Draw(List<Card> cards)
 		{
-			cards.ForEach(c => _cardTexturePng.Draw(_spriteBatch, c, 1, 0));
+			cards.ForEach(c => _cardTexturePng.Draw(_spriteBatch, c, 1, 5));
 		}
 	}
 }

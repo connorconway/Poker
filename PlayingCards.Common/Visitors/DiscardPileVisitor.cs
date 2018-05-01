@@ -1,8 +1,7 @@
 ﻿using System.Collections.Generic;
 using PlayingCards.Common.Cards;
-using PlayingCards.Common.Visitors;
 
-namespace PlayingCards.Common
+namespace PlayingCards.Common.Visitors
 {
 	public class DiscardPileVisitor : Visitor
 	{

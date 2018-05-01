@@ -1,9 +1,10 @@
 ﻿using NUnit.Framework;
 using PlayingCards.Common.Cards;
 using PlayingCards.Common.Exceptions;
+using PlayingCards.Common.Piles;
 using PlayingCards.Common.Tests.Visitors;
 
-namespace PlayingCards.Common.Tests
+namespace PlayingCards.Common.Tests.Piles
 {
 	[TestFixture]
 	public class DeckTests

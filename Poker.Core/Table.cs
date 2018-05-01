@@ -22,6 +22,7 @@ namespace Poker.Core
 			}
 
 			Players.ForEach(p => p.PlayerRaised += (s, e) => Pot += e.Amount);
+			Players.ForEach(p => p.CardDiscarded += (s, e) => _dealer.Discard(e.Card));
 		}
 
 		public void InitialiseHands()
@@ -52,7 +53,8 @@ namespace Poker.Core
 
 		private void InitialiseHand(Player player)
 		{
-			player.Accept(_dealer.CreateHand());
+			player.Discard();
+			player.Discard();
 			player.Accept(_dealer.DealCard());
 			player.Accept(_dealer.DealCard());
 		}

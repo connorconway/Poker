@@ -1,8 +1,7 @@
 using System.Linq;
 using Microsoft.Xna.Framework;
 using Microsoft.Xna.Framework.Graphics;
-using Microsoft.Xna.Framework.Input;
-using PlayingCards.Common;
+using PlayingCards.Common.Visitors;
 using Poker.Core;
 using Poker.Game.Buttons;
 using Poker.Game.Drawing;

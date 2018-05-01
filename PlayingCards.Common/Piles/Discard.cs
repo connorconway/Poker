@@ -2,9 +2,9 @@
 using PlayingCards.Common.Cards;
 using PlayingCards.Common.Visitors;
 
-namespace PlayingCards.Common
+namespace PlayingCards.Common.Piles
 {
-	public class DiscardPile : IVisitable
+	public class Discard : IVisitable
 	{
 		private readonly List<Card> _cards = new List<Card>();
 

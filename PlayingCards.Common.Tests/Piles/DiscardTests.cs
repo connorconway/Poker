@@ -1,28 +1,27 @@
-﻿using System.Collections.Generic;
-using NUnit.Framework;
-using PlayingCards.Common.Cards;
+﻿using NUnit.Framework;
+using PlayingCards.Common.Piles;
 using PlayingCards.Common.Tests.Visitors;
 
-namespace PlayingCards.Common.Tests
+namespace PlayingCards.Common.Tests.Piles
 {
 	[TestFixture]
-	public class DiscardPileTests
+	public class DiscardTests
 	{
-		private DiscardPile _discardPile;
+		private Discard _discard;
 
 		[SetUp]
-		public void DiscardPile_ShouldBeInitialised()
+		public void Discard_ShouldBeInitialised()
 		{
 			var dealer = new Dealer();
-			_discardPile = new DiscardPile();
-			_discardPile.Add(dealer.DealCard());
+			_discard = new Discard();
+			_discard.Add(dealer.DealCard());
 		}
 
 		[Test]
 		public void Add()
 		{
 			var discardPile = new CardTestVisitor();
-			_discardPile.Accept(discardPile);
+			_discard.Accept(discardPile);
 			
 			Assert.AreEqual(1, discardPile.Count);
 			Assert.AreEqual(1, discardPile.UniqueCount);
@@ -31,10 +30,10 @@ namespace PlayingCards.Common.Tests
 		[Test]
 		public void Reset()
 		{
-			_discardPile.Reset();
+			_discard.Reset();
 
 			var discardPile = new CardTestVisitor();
-			_discardPile.Accept(discardPile);
+			_discard.Accept(discardPile);
 
 			Assert.AreEqual(0, discardPile.Count);
 			Assert.AreEqual(0, discardPile.UniqueCount);

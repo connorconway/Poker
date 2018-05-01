@@ -5,7 +5,7 @@ using PlayingCards.Common.Cards;
 using PlayingCards.Common.Exceptions;
 using PlayingCards.Common.Visitors;
 
-namespace PlayingCards.Common
+namespace PlayingCards.Common.Piles
 {
 	public class Deck : IVisitable
 	{
