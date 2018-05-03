@@ -8,7 +8,7 @@ namespace Poker.Game.Tests.Buttons
     [TestClass]
     public class ClickableTests
     {
-        [TestMethod]
+        [TestMethod, Ignore("Investigate how to test UI components")]
         public void WhenButtonPressed_ThenIsClickedIsTrue()
         {
 	        var button = new FakeButton();
