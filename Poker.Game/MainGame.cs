@@ -79,7 +79,7 @@ namespace Poker.Game
 			_table.Accept(discardPileVisitor);
 			var cards = discardPileVisitor.Result();
 			var converter = new PileCardDrawingConverter(GraphicsDevice, _spriteBatch);
-			converter.Draw(cards.ToList());
+			converter.Draw(cards.Reverse().ToList());
 		}
 
 		private void DrawCards()

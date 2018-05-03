@@ -20,7 +20,7 @@ namespace PlayingCards.Common
 
 		public Card Pop()
 		{
-			return _cards.Count > 1 ? _cards.Pop() : null;
+			return _cards.Count > 0 ? _cards.Pop() : null;
 		}
 
 		public void Accept(Visitor visitor)
