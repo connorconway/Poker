@@ -1,11 +1,13 @@
 ﻿using PlayingCards.Common.Cards;
+using PlayingCards.Common.Piles;
+using PlayingCards.Common.Visitors;
 
 namespace PlayingCards.Common
 {
-	public class Dealer
+	public class Dealer : IVisitable
 	{
 		private readonly Deck _deck = new Deck();
-		private readonly DiscardPile _pile = new DiscardPile();
+		private readonly Discard _discard = new Discard();
 
 		public void ShuffleDeck()
 		{
@@ -16,10 +18,27 @@ namespace PlayingCards.Common
 
 		public Card DealCard()
 		{
-			if (_deck.AnyCardsLeft())
-				return _deck.Draw();
+			if (!_deck.AnyCardsLeft())
+			{
+				_deck.ReShuffle();
+				_discard.Reset();
+			}
+			return _deck.Draw();
+		}
 
-			return null;
+		public void Accept(Visitor visitor)
+		{
+			_deck.Accept(visitor);
+		}
+
+		public void Accept(DiscardPileVisitor visitor)
+		{
+			_discard.Accept(visitor);
+		}
+
+		public void Discard(Card card)
+		{
+			_discard.Add(card);
 		}
 	}
 }

@@ -1,9 +1,10 @@
 ﻿using NUnit.Framework;
 using PlayingCards.Common.Cards;
 using PlayingCards.Common.Exceptions;
+using PlayingCards.Common.Piles;
 using PlayingCards.Common.Tests.Visitors;
 
-namespace PlayingCards.Common.Tests
+namespace PlayingCards.Common.Tests.Piles
 {
 	[TestFixture]
 	public class DeckTests
@@ -58,12 +59,26 @@ namespace PlayingCards.Common.Tests
 		[Test]
 		public void DrawShould_ThrowOutOfCardsException_WhenThereAreNoCardsLeftInTheDeck()
 		{
-			for (var i = 0; i < 52; i++)
-			{
-				_deck.Draw();
-			}
+			DrawAllCardsInDeck();
 
 			Assert.Throws<OutOfCardsException>(() => _deck.Draw());
+		}
+
+		[Test]
+		public void ReshuffleShould_ReInitialiseDeck_AndShuffle()
+		{
+			DrawAllCardsInDeck();
+			Assert.AreEqual(false, _deck.AnyCardsLeft());
+
+			_deck.ReShuffle();
+
+			Assert.AreEqual(true, _deck.AnyCardsLeft());
+		}
+
+		private void DrawAllCardsInDeck()
+		{
+			for (var i = 0; i < 52; i++)
+				_deck.Draw();
 		}
 	}
 }

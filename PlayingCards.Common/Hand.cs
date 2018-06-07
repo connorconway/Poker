@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using PlayingCards.Common.Cards;
+using PlayingCards.Common.Extensions;
 using PlayingCards.Common.Visitors;
 
 namespace PlayingCards.Common
@@ -15,6 +16,11 @@ namespace PlayingCards.Common
 			if (_cards.Count == 5)
 				throw new InvalidOperationException("Hand can not exceed five cards");
 			_cards.Add(c);
+		}
+
+		public Card Pop()
+		{
+			return _cards.Count > 0 ? _cards.Pop() : null;
 		}
 
 		public void Accept(Visitor visitor)

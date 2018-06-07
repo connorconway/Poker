@@ -1,5 +1,6 @@
 ﻿using System;
 using NUnit.Framework;
+using PlayingCards.Common.Tests.Visitors;
 using Poker.Core.PlayerActions;
 
 namespace Poker.Core.Tests
@@ -33,6 +34,16 @@ namespace Poker.Core.Tests
 		{
 			_table.Players[1].TakeTurn(new Raise(88));
 			Assert.AreEqual(88, _table.Pot);
+		}
+
+		[Test]
+		public void WhenTableReinitialised_PlayersHandStill2Each()
+		{
+			_table.InitialiseHands();
+			_table.InitialiseHands();
+			var cardsVisitor = new CardTestVisitor();
+			_table.Accept(cardsVisitor);
+			Assert.AreEqual(8, cardsVisitor.Count);
 		}
 
 		[Test]

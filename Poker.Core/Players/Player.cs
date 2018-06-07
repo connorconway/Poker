@@ -16,9 +16,17 @@ namespace Poker.Core.Players
 		public delegate void PlayerRaisedEventHandler(object sender, PlayerRaisedEventArgs e);
 		public event PlayerRaisedEventHandler PlayerRaised;
 
+		public delegate void CardDiscardedEventHandler(object sender, CardDiscardedEventArgs e);
+		public event CardDiscardedEventHandler CardDiscarded;
+
 		protected internal void OnPlayerRaised(PlayerRaisedEventArgs e)
 		{
 			PlayerRaised?.Invoke(this, e);
+		}
+
+		private void OnCardDiscarded(CardDiscardedEventArgs e)
+		{
+			CardDiscarded?.Invoke(this, e);
 		}
 
 		public void TakeTurn(ICommand command)
@@ -28,11 +36,6 @@ namespace Poker.Core.Players
 
 		public void Out() => _inPlay = false;
 		public bool InGame => _inPlay;
-
-		public void Accept(Hand h)
-		{
-			_hand = h;
-		}
 
 		public void Accept(Card c)
 		{
@@ -47,6 +50,13 @@ namespace Poker.Core.Players
 		public int CompareTo(Player other)
 		{
 			return GetHashCode().CompareTo(other.GetHashCode());
+		}
+
+		public void Discard()
+		{
+			var card = _hand.Pop();
+			if (card != null)
+				OnCardDiscarded(new CardDiscardedEventArgs { Card = card });
 		}
 	}
 }

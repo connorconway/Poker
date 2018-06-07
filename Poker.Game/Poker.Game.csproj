@@ -64,6 +64,7 @@
     <Compile Include="Buttons\Button.cs" />
     <Compile Include="Buttons\Clickable.cs" />
     <Compile Include="DisposableSpriteBatch.cs" />
+    <Compile Include="Drawing\PileCardDrawingConverter.cs" />
     <Compile Include="MainGame.cs" />
     <Compile Include="TextureHandling\CardTexture.cs" />
     <Compile Include="Resources\Resource.Designer.cs" />
@@ -72,7 +73,7 @@
     <Compile Include="TextureHandling\Positions.cs" />
     <Compile Include="TextureHandling\Texture.cs" />
     <Compile Include="TextureHandling\TableTexture.cs" />
-    <Compile Include="Drawing\CardDrawingConverter.cs" />
+    <Compile Include="Drawing\PlayerCardDrawingConverter.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\AboutResources.txt" />

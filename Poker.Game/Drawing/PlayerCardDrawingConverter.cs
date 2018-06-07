@@ -6,12 +6,12 @@ using Poker.Game.TextureHandling;
 
 namespace Poker.Game.Drawing
 {
-	public class CardDrawingConverter
+	public class PlayerCardDrawingConverter
 	{
 		private readonly SpriteBatch _spriteBatch;
 		private readonly CardTexture _cardTexturePng;
 
-		public CardDrawingConverter(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch)
+		public PlayerCardDrawingConverter(GraphicsDevice graphicsDevice, SpriteBatch spriteBatch)
 		{
 			_spriteBatch = spriteBatch;
 			_cardTexturePng = new CardTexture(graphicsDevice);

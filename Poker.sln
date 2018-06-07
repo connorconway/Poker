@@ -13,7 +13,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Core", "Poker.Core\Po
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Game", "Poker.Game\Poker.Game.csproj", "{7B52FE02-42F7-4502-BA8B-5CE9B093F92C}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Poker.Game.Tests", "Poker.Game.Tests\Poker.Game.Tests.csproj", "{59A48B93-57EC-4BA9-9146-18F7901F63CF}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Poker.Game.Tests", "Poker.Game.Tests\Poker.Game.Tests.csproj", "{59A48B93-57EC-4BA9-9146-18F7901F63CF}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

@@ -1,7 +1,7 @@
 ﻿using NUnit.Framework;
 using PlayingCards.Common.Cards;
 
-namespace PlayingCards.Common.Tests
+namespace PlayingCards.Common.Tests.Cards
 {
 	public class CardTests
 	{

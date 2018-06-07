@@ -5,7 +5,7 @@ using PlayingCards.Common.Cards;
 using PlayingCards.Common.Exceptions;
 using PlayingCards.Common.Visitors;
 
-namespace PlayingCards.Common
+namespace PlayingCards.Common.Piles
 {
 	public class Deck : IVisitable
 	{
@@ -46,6 +46,12 @@ namespace PlayingCards.Common
 				new Stack<Card>(new[] {Suit.Clubs, Suit.Diamonds, Suit.Hearts, Suit.Spades}
 					.SelectMany(suit => Enumerable.Range(1, 13), (suit, value) => new Card(suit, (Value) value))
 					.ToArray());
+		}
+
+		public void ReShuffle()
+		{
+			InitialiseCards();
+			Shuffle();
 		}
 	}
 }
