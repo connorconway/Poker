@@ -61,6 +61,7 @@ namespace Poker.Game
 				_startGameButton.Draw(_spriteBatch);
 				DrawCards();
 				DrawDiscardPile();
+				//DrawDeck();
 			}
 
 			base.Draw(gameTime);
@@ -70,12 +71,17 @@ namespace Poker.Game
 		{
 			//TODO how to draw the deck as this exists within the dealer class?
 			//TODO Should be face down version of all cards in the deck
+			var discardPileVisitor = new DiscardPileVisitor();
+			_table.Accept(discardPileVisitor);
+			var cards = discardPileVisitor.Result();
+			var converter = new PileCardDrawingConverter(GraphicsDevice, _spriteBatch);
+			converter.Draw(cards.ToList());
 		}
 
 		private void DrawDiscardPile()
 		{
 			//TODO how to draw the discard pile as this exists within the dealer class?
-			var discardPileVisitor = new DiscardPileVisitor();
+			var discardPileVisitor = new DeckPileVisitor();
 			_table.Accept(discardPileVisitor);
 			var cards = discardPileVisitor.Result();
 			var converter = new PileCardDrawingConverter(GraphicsDevice, _spriteBatch);
